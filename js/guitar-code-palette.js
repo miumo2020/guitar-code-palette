@@ -1,5 +1,5 @@
 const MAX_STRING = 6;
-const MAX_FLET = 5;
+const MAX_FLET = 15;
 
 
 class FingerBoard {
@@ -141,3 +141,8 @@ for(let i=1; i<=MAX_FLET; i++) {
     flet.className = 'flet';
     finger_board.appendChild(flet);
 }
+
+let reset_btn = document.getElementById('reset');
+reset_btn.addEventListener('click', function(event) {
+    fg.reset();
+});
