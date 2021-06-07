@@ -6,6 +6,8 @@ class FingerBoard {
     this.tuning = [52, 47, 43, 38, 33, 28];
     // -1:押弦なし　0:解放
     this.press_point = [-1, -1, -1, -1, -1, -1];
+
+    this.code_display = document.getElementById("code-display");
   }
 
   SCALE_DICT = {
@@ -17,6 +19,21 @@ class FingerBoard {
     aug: [0, 4, 8],
     sus4: [0, 5, 7],
     sus2: [0, 2, 7],
+  };
+
+  NOTE_DICT = {
+    0: "C",
+    1: "C#",
+    2: "D",
+    3: "D#",
+    4: "E",
+    5: "F",
+    6: "F#",
+    7: "G",
+    8: "G#",
+    9: "A",
+    10: "A#",
+    11: "B",
   };
 
   pressString(string, flet) {
@@ -46,11 +63,10 @@ class FingerBoard {
   predictCode() {
     let root = this.getRoot();
     let scale = this.getNowScale();
-    // console.log(scale);
     const code = Object.keys(this.SCALE_DICT).filter((key) => {
       return this.SCALE_DICT[key].toString() === scale.toString();
     });
-    // console.log(code);
+    this.code_display.textContent = root + code;
   }
 
   getRoot() {
@@ -62,7 +78,8 @@ class FingerBoard {
       return a < b ? -1 : 1;
     });
     let root = scale[0];
-    return root;
+    root = root % 12;
+    return this.NOTE_DICT[root];
   }
 
   getNowScale() {
