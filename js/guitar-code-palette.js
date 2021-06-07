@@ -4,8 +4,9 @@ const MAX_FLET = 15;
 
 class FingerBoard {
     constructor() {
-        this.tuning = [64, 59, 55, 50, 45, 40];
-        this.press_point = [0, 0, 0, 0, 0, 0];
+        this.tuning = [52, 47, 43, 38, 33, 28];
+        // -1:押弦なし　0:解放
+        this.press_point = [-1, -1, -1, -1, -1, -1];
     }
 
     SCALE_DICT = {
@@ -21,7 +22,7 @@ class FingerBoard {
 
     pressString(string, flet) {
         if (this.press_point[string-1] == flet) {
-            this.press_point[string-1] = 0;
+            this.press_point[string-1] = -1;
         } else {
             this.press_point[string-1] = flet;
         }
@@ -30,7 +31,7 @@ class FingerBoard {
     }
 
     update() {
-        for(let i=1; i<=MAX_FLET; i++) {
+        for(let i=0; i<=MAX_FLET; i++) {
             for(let j=1; j<=MAX_STRING; j++) {
                 let p = document.getElementById('string-press-' + j + '-flet-' + i);
                 if (this.press_point[j-1] == i) {
@@ -40,16 +41,17 @@ class FingerBoard {
                 }   
             }
         }
+        console.log(this.press_point);
     }
 
     predictCode() {
         let root = this.getRoot();
         let scale = this.getNowScale();
-        console.log(scale);
+        // console.log(scale);
         const code = Object.keys(this.SCALE_DICT).filter((key) => {
             return this.SCALE_DICT[key].toString() === scale.toString();
         });
-        console.log(code);
+        // console.log(code);
     }
 
     getRoot() {
@@ -93,7 +95,7 @@ class FingerBoard {
     }
 
     reset() {
-        this.press_point = [0, 0, 0, 0, 0, 0];
+        this.press_point = [-1, -1, -1, -1, -1, -1];
         this.update();
     }
 }
@@ -107,6 +109,25 @@ const app = document.getElementById('app');
 let finger_board = document.createElement('div');
 finger_board.className = 'finger-board';
 app.appendChild(finger_board);
+
+let d = document.createElement('div');
+finger_board.appendChild(d);
+for(let j=1; j<=MAX_STRING; j++) {
+    let string_press = document.createElement('div');
+    string_press.className = 'open-string';
+    string_press.id = 'string-press-' + j + '-flet-' + '0';
+
+    let string_area = document.createElement('div');
+    string_area.className = 'string-area';
+    string_area.appendChild(string_press);
+
+    string_area.addEventListener('click', function() {
+        fg.pressString(j, 0);
+    });
+
+    d.appendChild(string_area);
+}
+
 
 let nut = document.createElement('div');
 nut.className = 'nut';
