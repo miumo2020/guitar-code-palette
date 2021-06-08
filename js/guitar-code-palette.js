@@ -129,6 +129,14 @@ class FingerBoard {
     this.predictCode();
     this.update();
   }
+
+  shiftUp() {
+    for (let j = 0; j <= MAX_STRING - 1; j++) {
+      this.press_point[j] = this.press_point[j] + 1;
+    }
+    this.predictCode();
+    this.update();
+  }
 }
 
 let fg = new FingerBoard();
@@ -199,4 +207,9 @@ reset_btn.addEventListener("click", function (event) {
 let shift_down_btn = document.getElementById("shift-down");
 shift_down_btn.addEventListener("click", function (event) {
   fg.shiftDown();
+});
+
+let shift_up_btn = document.getElementById("shift-up");
+shift_up_btn.addEventListener("click", function (event) {
+  fg.shiftUp();
 });
