@@ -7,8 +7,7 @@ class FingerBoard {
     // -1:押弦なし　0:解放
     this.press_point = [-1, -1, -1, -1, -1, -1];
 
-    this.code_display = document.getElementById("code-display");
-    this.code_display.textContent = "---";
+    this.code_display = "---";
   }
 
   SCALE_DICT = {
@@ -43,8 +42,8 @@ class FingerBoard {
     } else {
       this.press_point[string - 1] = flet;
     }
-    this.update();
     this.predictCode();
+    this.update();
   }
 
   update() {
@@ -58,7 +57,7 @@ class FingerBoard {
         }
       }
     }
-    console.log(this.press_point);
+    document.getElementById("code-display").textContent = this.code_display;
   }
 
   predictCode() {
@@ -69,9 +68,9 @@ class FingerBoard {
       return this.SCALE_DICT[key].toString() === scale.toString();
     });
     if (code != "") {
-      this.code_display.textContent = root + code;
+      this.code_display = root + code;
     } else {
-      this.code_display.textContent = "---";
+      this.code_display = "---";
     }
   }
 
@@ -95,7 +94,6 @@ class FingerBoard {
         scale.push(this.tuning[j] + this.press_point[j]);
       }
     }
-    console.log(scale);
     scale.sort(function (a, b) {
       return a < b ? -1 : 1;
     });
@@ -120,6 +118,7 @@ class FingerBoard {
 
   reset() {
     this.press_point = [-1, -1, -1, -1, -1, -1];
+    this.code_display = "---";
     this.update();
   }
 }
