@@ -8,6 +8,7 @@ class FingerBoard {
     this.press_point = [-1, -1, -1, -1, -1, -1];
 
     this.code_display = document.getElementById("code-display");
+    this.code_display.textContent = "---";
   }
 
   SCALE_DICT = {
@@ -63,10 +64,15 @@ class FingerBoard {
   predictCode() {
     let root = this.getRoot();
     let scale = this.getNowScale();
+    console.log(scale);
     const code = Object.keys(this.SCALE_DICT).filter((key) => {
       return this.SCALE_DICT[key].toString() === scale.toString();
     });
-    this.code_display.textContent = root + code;
+    if (code != "") {
+      this.code_display.textContent = root + code;
+    } else {
+      this.code_display.textContent = "---";
+    }
   }
 
   getRoot() {
@@ -85,8 +91,11 @@ class FingerBoard {
   getNowScale() {
     let scale = [];
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      scale.push(this.tuning[j] + this.press_point[j]);
+      if (this.press_point[j] >= 0) {
+        scale.push(this.tuning[j] + this.press_point[j]);
+      }
     }
+    console.log(scale);
     scale.sort(function (a, b) {
       return a < b ? -1 : 1;
     });
