@@ -123,16 +123,22 @@ class FingerBoard {
   }
 
   shiftDown() {
+    if (this.press_point.some((element) => element == 0) == true) return;
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      this.press_point[j] = this.press_point[j] - 1;
+      if (this.press_point[j] >= 0) {
+        this.press_point[j] = this.press_point[j] - 1;
+      }
     }
     this.predictCode();
     this.update();
   }
 
   shiftUp() {
+    if (this.press_point.some((element) => element == MAX_FLET) == true) return;
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      this.press_point[j] = this.press_point[j] + 1;
+      if (this.press_point[j] >= 0) {
+        this.press_point[j] = this.press_point[j] + 1;
+      }
     }
     this.predictCode();
     this.update();
