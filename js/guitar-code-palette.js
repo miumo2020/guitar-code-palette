@@ -77,7 +77,9 @@ class FingerBoard {
   getRoot() {
     let scale = [];
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      scale.push(this.tuning[j] + this.press_point[j]);
+      if (this.press_point[j] >= 0) {
+        scale.push(this.tuning[j] + this.press_point[j]);
+      }
     }
     scale.sort(function (a, b) {
       return a < b ? -1 : 1;
