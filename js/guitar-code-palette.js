@@ -145,6 +145,17 @@ class FingerBoard {
     this.predictCode();
     this.update();
   }
+
+  sound() {
+    for (let j = 1; j <= MAX_STRING; j++) {
+      if (this.press_point[j-1] >= 0) {
+        let audio = new Audio(
+          "js/mp3/tone_" + j + "-" + this.press_point[j-1] + ".mp3"
+        );
+        audio.play();
+      }
+    }
+  }
 }
 
 let fg = new FingerBoard();
@@ -220,4 +231,9 @@ shift_down_btn.addEventListener("click", function (event) {
 let shift_up_btn = document.getElementById("shift-up");
 shift_up_btn.addEventListener("click", function (event) {
   fg.shiftUp();
+});
+
+let sound_btn = document.getElementById("sound");
+sound_btn.addEventListener("click", function (event) {
+  fg.sound();
 });
