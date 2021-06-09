@@ -147,13 +147,19 @@ class FingerBoard {
   }
 
   sound() {
-    for (let j = 1; j <= MAX_STRING; j++) {
-      if (this.press_point[j-1] >= 0) {
-        let audio = new Audio(
-          "js/mp3/tone_" + j + "-" + this.press_point[j-1] + ".mp3"
-        );
-        audio.play();
+    let delay_time = 40.0; // msec
+    let delay = 0;
+    for (let j = MAX_STRING; j >= 1; j--) {
+      const func = () => {
+        if (this.press_point[j-1] >= 0) {
+            let audio = new Audio(
+              "js/mp3/tone_" + j + "-" + this.press_point[j-1] + ".mp3"
+            );
+            audio.play();
+          }
       }
+      setTimeout(func, delay);
+      delay = delay + delay_time;
     }
   }
 }
