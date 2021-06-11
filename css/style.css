@@ -1,7 +1,7 @@
 .finger-board {
   display: flex;
   flex-wrap: nowrap;
-  width: 600px;
+  width: 800px;
 }
 
 .string-area {
@@ -61,6 +61,21 @@
   top: 15px;
   width: 8px;
   height: 152px;
+  background-color: black;
+}
+
+.picking-string-area {
+  width: 200px;
+  height: 30px;
+  margin: 0;
+}
+
+.picking-string {
+  position: relative;
+  top: 50%;
+  margin: 0;
+  width: 200px;
+  height: 2px;
   background-color: black;
 }
 

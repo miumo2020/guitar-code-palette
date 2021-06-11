@@ -151,13 +151,13 @@ class FingerBoard {
     let delay = 0;
     for (let j = MAX_STRING; j >= 1; j--) {
       const func = () => {
-        if (this.press_point[j-1] >= 0) {
-            let audio = new Audio(
-              "js/mp3/tone_" + j + "-" + this.press_point[j-1] + ".mp3"
-            );
-            audio.play();
-          }
-      }
+        if (this.press_point[j - 1] >= 0) {
+          let audio = new Audio(
+            "js/mp3/tone_" + j + "-" + this.press_point[j - 1] + ".mp3"
+          );
+          audio.play();
+        }
+      };
       setTimeout(func, delay);
       delay = delay + delay_time;
     }
@@ -223,6 +223,19 @@ for (let i = 1; i <= MAX_FLET; i++) {
   flet.className = "flet";
   finger_board.appendChild(flet);
 }
+
+var div = document.createElement("div");
+for (let j = 1; j <= MAX_STRING; j++) {
+  let sound_string = document.createElement("div");
+  sound_string.className = "picking-string";
+
+  let sound_string_area = document.createElement("div");
+  sound_string_area.className = "picking-string-area";
+
+  sound_string_area.appendChild(sound_string);
+  div.appendChild(sound_string_area);
+}
+finger_board.appendChild(div);
 
 let reset_btn = document.getElementById("reset");
 reset_btn.addEventListener("click", function (event) {
