@@ -168,12 +168,15 @@ let fg = new FingerBoard();
 
 const app = document.getElementById("app");
 
+//////////////////// DOM階層構造作成 ////////////////////
+
 let finger_board = document.createElement("div");
 finger_board.className = "finger-board";
 app.appendChild(finger_board);
 
-let d = document.createElement("div");
-finger_board.appendChild(d);
+// 開放弦
+var div = document.createElement("div");
+finger_board.appendChild(div);
 for (let j = 1; j <= MAX_STRING; j++) {
   let string_press = document.createElement("div");
   string_press.className = "open-string";
@@ -187,17 +190,19 @@ for (let j = 1; j <= MAX_STRING; j++) {
     fg.pressString(j, 0);
   });
 
-  d.appendChild(string_area);
+  div.appendChild(string_area);
 }
 
+// ナット
 let nut = document.createElement("div");
 nut.className = "nut";
 finger_board.appendChild(nut);
 
+// 弦/フレット
 // 15fletループ
 for (let i = 1; i <= MAX_FLET; i++) {
-  let d = document.createElement("div");
-  finger_board.appendChild(d);
+  var div = document.createElement("div");
+  finger_board.appendChild(div);
   // 6stringループ
   for (let j = 1; j <= MAX_STRING; j++) {
     let string = document.createElement("div");
@@ -217,25 +222,29 @@ for (let i = 1; i <= MAX_FLET; i++) {
       fg.pressString(j, i);
     });
 
-    d.appendChild(string_area);
+    div.appendChild(string_area);
   }
   let flet = document.createElement("div");
   flet.className = "flet";
   finger_board.appendChild(flet);
 }
 
+// ピッキングエリア
 var div = document.createElement("div");
 for (let j = 1; j <= MAX_STRING; j++) {
-  let sound_string = document.createElement("div");
-  sound_string.className = "picking-string";
+  let picking_string = document.createElement("div");
+  picking_string.className = "picking-string";
 
-  let sound_string_area = document.createElement("div");
-  sound_string_area.className = "picking-string-area";
+  let picking_string_area = document.createElement("div");
+  picking_string_area.className = "picking-string-area";
 
-  sound_string_area.appendChild(sound_string);
-  div.appendChild(sound_string_area);
+  picking_string_area.appendChild(picking_string);
+  div.appendChild(picking_string_area);
 }
 finger_board.appendChild(div);
+
+
+//////////////////// イベント設定 ////////////////////
 
 let reset_btn = document.getElementById("reset");
 reset_btn.addEventListener("click", function (event) {
