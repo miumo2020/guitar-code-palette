@@ -1,3 +1,5 @@
+import {CodeMenu} from "./code-menu.js"
+
 const MAX_STRING = 6;
 const MAX_FLET = 15;
 
@@ -281,3 +283,8 @@ let sound_btn = document.getElementById("sound");
 sound_btn.addEventListener("click", function (event) {
   fg.sound();
 });
+
+//////////////////// React.js ////////////////////
+
+const e = React.createElement;
+ReactDOM.render(e(CodeMenu), document.getElementById("codemenu"));
