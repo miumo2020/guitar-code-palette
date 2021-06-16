@@ -3,23 +3,31 @@
 const e = React.createElement;
 
 class Code extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      root: props.root,
-      codename: props.codename,
-      positions: props.positions,
-      child: props.child,
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: props.name,
+        positions: props.positions,
+        children: props.children,
+      };
+      this.call = props.call;
+    }
+    
+    render() {
+      if (this.state.children.length != 0) {
+        return e("li", {}, [
+          e("a", { href: "#", onClick: () => this.call(this.state.name, 
+            this.state.positions[0])}, this.state.name),
+          e("ul", {}, this.state.children),
+        ]);
+      } else {
+        return e("li", {}, [
+          e("a", { href: "#" , onClick: () => this.call(this.state.name, 
+            this.state.positions[0])}, this.state.name)
+        ]);
+      }
+    }
   }
-
-  render() {
-    return e("li", {}, [
-      e("a", {}, this.state.root + this.state.codename),
-      e("ul", {}, this.state.child),
-    ]);
-  }
-}
 
 export class CodeMenu extends React.Component {
   constructor(props) {
@@ -44,43 +52,42 @@ export class CodeMenu extends React.Component {
     },
   };
 
+  // TODO: 一時的にCODEクラスに本関数を渡しているが、押弦を直接操作する関数に変更する
+  call(name, position) {
+    console.log(name, position)
+  }
+
   render() {
-    // return e("li", {}, [
-    //   e("a", { href: "#" }, ["Code"]),
-    //   e("ul", {}, [
-    //       e("li", {}, [
-    //           e(Code, {root:"C", codename:"", positions:""}, "")])],),
-    // ]);
-
-    // console.log(this.CODE_MENU["C"]["child"]);
-    // Object.keys(this.CODE_MENU).forEach(function(root){
-    //     Object.keys(this.CODE_MENU[root]["child"]).forEach(function(codes){
-    //         console.log(codes);
-    //     });
-    // });
-
     return e("li", {}, [
-      e("a", { href: "#" }, ["Code"]),
+      e("a", {}, ["Code"]),
       e("ul", {}, [
-        e(Code, {
-          root: "C",
-          codename: "",
-          positions: [],
-          child: [
-            e(Code, {
-              root: "C",
-              codename: "",
-              positions: [],
-              child: [],
-            }),
-            e(Code, {
-              root: "C",
-              codename: "min",
-              positions: [],
-              child: ["asdf"],
-            }),
-          ],
-        }),
+        e(Code, {name: "C", positions: [], call: this.call, children: [
+          e(Code, {name: "Cmaj", positions: [], call: this.call, children: [
+            e(Code, {name: "C6", positions: [], call: this.call, children: [
+              e(Code, {name: "C6(9)", positions: [], call: this.call, children: []}),              
+            ],}),
+            e(Code, {name: "C7", positions: [], call: this.call, children: [
+              e(Code, {name: "C7(♭9)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(9)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(#9)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(11)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(#11)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(♭13)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(13)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(♭5)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "C7(5#)", positions: [], call: this.call, children: []}),
+            ],}),
+            e(Code, {name: "Cmaj7", positions: [], call: this.call, children: [
+              e(Code, {name: "Cmaj7(9)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "Cmaj7(#11)", positions: [], call: this.call, children: []}),
+              e(Code, {name: "Cmaj7(13)", positions: [], call: this.call, children: []}),
+            ],}),
+            e(Code, {name: "Cadd7", positions: [], call: this.call, children: [],}),  
+          ],}),
+          e(Code, {name: "Cmin", positions: [], call: this.call, children: [
+
+          ],}),
+        ],}),
       ]),
     ]);
   }
