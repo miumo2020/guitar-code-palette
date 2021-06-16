@@ -6,63 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <ul class="dropmenu">
-      <li>
-        <a href="#">Code</a>
-        <ul>
-          <li>
-            <a href="#">C</a>
-            <ul>
-              <li>
-                <a href="#">maj</a>
-                <ul>
-                  <li><a href="#">-</a></li>
-                  <li><a href="#">6</a></li>
-                  <li><a href="#">7</a></li>
-                  <li><a href="#">9</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">min</a>
-                <ul>
-                  <li><a href="#">-</a></li>
-                  <li><a href="#">6</a></li>
-                  <li><a href="#">7</a></li>
-                  <li><a href="#">9</a></li>
-                </ul>
-              </li>
-              <li><a href="#">dim</a></li>
-              <li><a href="#">aug</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">C#</a>
-            <ul>
-              <li>
-                <a href="#">maj</a>
-                <ul>
-                  <li><a href="#">-</a></li>
-                  <li><a href="#">6</a></li>
-                  <li><a href="#">7</a></li>
-                  <li><a href="#">9</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">min</a>
-                <ul>
-                  <li><a href="#">-</a></li>
-                  <li><a href="#">6</a></li>
-                  <li><a href="#">7</a></li>
-                  <li><a href="#">9</a></li>
-                </ul>
-              </li>
-              <li><a href="#">dim</a></li>
-              <li><a href="#">aug</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <ul class="dropmenu" id="codemenu"></ul>
 
     <div id="app">
       <div class="code-display" id="code-display"></div>
@@ -73,8 +17,6 @@
     <div class="btn btn--green btn--cubic" id="shift-up">></div>
     <div class="btn btn--green btn--cubic" id="sound">sound</div>
 
-    <ul class="dropmenu" id="codemenu"></ul>
-    
     <!-- Load React. -->
     <script
       src="https://unpkg.com/react@17/umd/react.production.min.js"
