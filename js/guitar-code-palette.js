@@ -1,3 +1,4 @@
+import {FingerBoard2} from "./finger-board.js"
 import {CodeMenu} from "./code-menu.js"
 
 const MAX_STRING = 6;
@@ -288,3 +289,5 @@ sound_btn.addEventListener("click", function (event) {
 
 const e = React.createElement;
 ReactDOM.render(e(CodeMenu), document.getElementById("codemenu"));
+ReactDOM.render(e(FingerBoard2), document.getElementById("finger-board"));
+

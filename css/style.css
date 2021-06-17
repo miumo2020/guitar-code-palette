@@ -84,7 +84,28 @@
   height: 180px;
 }
 
-/* http://js.crap.jp/book/chapter2/drop-down-3menu.html */
+#finger-board {
+  width: 800px;
+}
+
+.string2 {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 1px;
+  width: 700px;
+  background-color: burlywood;
+}
+
+.flet2 {
+  width: 30px;
+  height: 20px;
+  margin-right: 2px;
+  background-color: cadetblue;
+}
+
+.flet2:hover {
+  background-color: lightgray;
+}
 
 .dropmenu {
   list-style-type: none;
