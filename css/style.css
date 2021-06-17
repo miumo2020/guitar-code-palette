@@ -93,14 +93,14 @@
   flex-wrap: nowrap;
   margin-top: 1px;
   width: 700px;
-  background-color: burlywood;
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .flet2 {
   width: 30px;
-  height: 20px;
+  height: 30px;
   margin-right: 2px;
-  background-color: cadetblue;
+  background-color: rgba(0, 0, 255, 0.1);
 }
 
 .flet2:hover {
