@@ -96,6 +96,17 @@
   background-color: rgba(255, 0, 0, 0.1);
 }
 
+.string2-press {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+}
+
 .flet2 {
   width: 30px;
   height: 30px;

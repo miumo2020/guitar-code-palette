@@ -24,6 +24,13 @@ class String extends React.Component {
     this.setPressPoint(this.state.number, new_pos)
   }
 
+  mark_press(pos) {
+    return(
+      this.state.position == pos ? 
+      e("div", {className: "string2-press"}, [] ) : ""
+    )
+  }
+
   render() {
     let flet_0 = ""
     if(this.state.position==0){
@@ -34,16 +41,16 @@ class String extends React.Component {
     return(
       e("div", { class: "string2", id: this.state.name }, [
         e("div", { class: "flet2", onClick: ()=>this.press(0)}, [flet_0]),
-        e("div", { class: "flet2", onClick: ()=>this.press(1)}, [this.state.position == 1 ? "●" : ""]),
-        e("div", { class: "flet2", onClick: ()=>this.press(2)}, [this.state.position == 2 ? "●" : ""]),
-        e("div", { class: "flet2", onClick: ()=>this.press(3)}, [this.state.position == 3 ? "●" : ""]),
-        e("div", { class: "flet2", onClick: ()=>this.press(4)}, [this.state.position == 4 ? "●" : ""]),      
-        e("div", { class: "flet2", onClick: ()=>this.press(5)}, [this.state.position == 5 ? "●" : ""]),      
-        e("div", { class: "flet2", onClick: ()=>this.press(6)}, [this.state.position == 6 ? "●" : ""]),      
-        e("div", { class: "flet2", onClick: ()=>this.press(7)}, [this.state.position == 7 ? "●" : ""]),      
-        e("div", { class: "flet2", onClick: ()=>this.press(8)}, [this.state.position == 8 ? "●" : ""]),      
-        e("div", { class: "flet2", onClick: ()=>this.press(9)}, [this.state.position == 9 ? "●" : ""]),      
-        e("div", { class: "flet2", onClick: ()=>this.press(10)}, [this.state.position == 10 ? "●" : ""]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(1)}, [this.mark_press(1)]),
+        e("div", { class: "flet2", onClick: ()=>this.press(2)}, [this.mark_press(2)]),
+        e("div", { class: "flet2", onClick: ()=>this.press(3)}, [this.mark_press(3)]),
+        e("div", { class: "flet2", onClick: ()=>this.press(4)}, [this.mark_press(4)]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(5)}, [this.mark_press(5)]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(6)}, [this.mark_press(6)]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(7)}, [this.mark_press(7)]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(8)}, [this.mark_press(8)]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(9)}, [this.mark_press(9)]),      
+        e("div", { class: "flet2", onClick: ()=>this.press(10)}, [this.mark_press(10)]),      
       ])
     )
   }
