@@ -1,3 +1,5 @@
+"use strict";
+
 import {FingerBoard2} from "./finger-board.js"
 import {CodeMenu} from "./code-menu.js"
 
@@ -288,6 +290,23 @@ sound_btn.addEventListener("click", function (event) {
 //////////////////// React.js ////////////////////
 
 const e = React.createElement;
-ReactDOM.render(e(CodeMenu), document.getElementById("codemenu"));
-ReactDOM.render(e(FingerBoard2), document.getElementById("finger-board"));
 
+class GuitarCodePalette extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+
+    };
+  }
+
+  render(){
+    return(
+      [e("ul", {key: "code-menu-wrapper", className: "dropmenu"}, [
+        e(CodeMenu, {key: "code-menu"}, []),
+      ]),
+      e(FingerBoard2, {key: "finger-board-2"}, [])]
+    )
+  }
+}
+
+ReactDOM.render(e(GuitarCodePalette), document.getElementById("app2"));
