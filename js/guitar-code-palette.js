@@ -1,7 +1,7 @@
 "use strict";
 
-import {FingerBoard2} from "./finger-board.js"
-import {CodeMenu} from "./code-menu.js"
+import { FingerBoard2 } from "./finger-board.js";
+import { CodeMenu } from "./code-menu.js";
 
 const MAX_STRING = 6;
 const MAX_FLET = 15;
@@ -292,20 +292,34 @@ sound_btn.addEventListener("click", function (event) {
 const e = React.createElement;
 
 class GuitarCodePalette extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-
+      tuning: [52, 47, 43, 38, 33, 28],
+      press_point: [-1, -1, -1, -1, -1, -1], // -1:押弦なし　0:解放
+      code_display: "---",
     };
+    this.setPressPoint = this.setPressPoint.bind(this);
   }
 
-  render(){
-    return(
-      [e("ul", {key: "code-menu-wrapper", className: "dropmenu"}, [
-        e(CodeMenu, {key: "code-menu"}, []),
+  setPressPoint = (string, point) => {
+    let new_point = -1;
+    if (this.state.press_point[string - 1] != point) {
+      new_point = point;
+    }
+    let new_press_point = [...this.state.press_point];
+    new_press_point[string - 1] = new_point;
+    this.setState({ press_point: new_press_point });
+  };
+
+  render() {
+    return [
+      e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
+        e(CodeMenu, { key: "code-menu" }, []),
       ]),
-      e(FingerBoard2, {key: "finger-board-2"}, [])]
-    )
+      e("div", { key: "display-press-point" }, [this.state.press_point]),
+      e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
+    ];
   }
 }
 
