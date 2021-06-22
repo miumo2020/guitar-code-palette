@@ -312,6 +312,10 @@ class GuitarCodePalette extends React.Component {
     this.setState({ press_point: new_press_point });
   };
 
+  reset() {
+    this.setState({ press_point: [-1, -1, -1, -1, -1, -1] });
+  }
+
   render() {
     return [
       e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
@@ -319,6 +323,7 @@ class GuitarCodePalette extends React.Component {
       ]),
       e("div", { key: "display-press-point" }, [this.state.press_point]),
       e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
+      e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"])
     ];
   }
 }
