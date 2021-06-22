@@ -327,6 +327,17 @@ class GuitarCodePalette extends React.Component {
     this.setState({ press_point: new_press_point });
   }
 
+  shiftUp() {
+    if (this.state.press_point.some((element) => element == MAX_FLET) == true) return;
+    let new_press_point = [...this.state.press_point];
+    for (let j = 0; j <= MAX_STRING - 1; j++) {
+      if (new_press_point[j] >= 0) {
+        new_press_point[j] = new_press_point[j] + 1;
+      }
+    }
+    this.setState({ press_point: new_press_point });
+  }
+
   render() {
     return [
       e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
@@ -335,7 +346,8 @@ class GuitarCodePalette extends React.Component {
       e("div", { key: "display-press-point" }, [this.state.press_point]),
       e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
       e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
-      e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"])
+      e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
+      e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
     ];
   }
 }
