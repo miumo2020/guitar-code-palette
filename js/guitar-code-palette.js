@@ -338,6 +338,23 @@ class GuitarCodePalette extends React.Component {
     this.setState({ press_point: new_press_point });
   }
 
+  sound() {
+    let delay_time = 40.0; // msec
+    let delay = 0;
+    for (let j = MAX_STRING; j >= 1; j--) {
+      const func = () => {
+        if (this.state.press_point[j - 1] >= 0) {
+          let audio = new Audio(
+            "js/mp3/tone_" + j + "-" + this.state.press_point[j - 1] + ".mp3"
+          );
+          audio.play();
+        }
+      };
+      setTimeout(func, delay);
+      delay = delay + delay_time;
+    }
+  }
+
   render() {
     return [
       e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
@@ -348,6 +365,7 @@ class GuitarCodePalette extends React.Component {
       e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
       e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
       e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
+      e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
     ];
   }
 }
