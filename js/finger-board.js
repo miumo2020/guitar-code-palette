@@ -20,16 +20,18 @@ class String extends React.Component {
     )
   }
 
-  render() {
-    let flet_0 = ""
+  mark_open_string() {
     if(this.props.press_point[this.props.number-1]==0){
-        flet_0 = "〇"
+      return e("div", {key: "string_"+this.props.number+"-flet_0-opened", className: "open-string2"});
     } else if(this.props.press_point[this.props.number-1]==-1){
-        flet_0 = "×"
+      return "×";
     }
+  }
+
+  render() {
     return(
       e("div", { key: "string_" + this.props.number + "-wrapper", className: "string2"}, [
-        e("div", { key: "string_" + this.props.number + "-flet_0", className: "flet2", onClick: ()=>this.press(0)}, [flet_0]),
+        e("div", { key: "string_" + this.props.number + "-flet_0", className: "flet2", onClick: ()=>this.press(0)}, [this.mark_open_string()]),
         e("div", { key: "string_" + this.props.number + "-flet_1", className: "flet2", onClick: ()=>this.press(1)}, [this.mark_press(1)]),
         e("div", { key: "string_" + this.props.number + "-flet_2", className: "flet2", onClick: ()=>this.press(2)}, [this.mark_press(2)]),
         e("div", { key: "string_" + this.props.number + "-flet_3", className: "flet2", onClick: ()=>this.press(3)}, [this.mark_press(3)]),
