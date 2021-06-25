@@ -54,7 +54,8 @@ export class FingerBoard2 extends React.Component {
   }
 
   render() {
-    return e("div", {key: "strings"}, [
+    return e("div", {key: "finger-board", id: "finger-board2"}, [
+      e("canvas", {key: "finger-board-canvas", id: "finger-board-canvas"}),
       e(String, { key: "string_1", number: 1, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
       e(String, { key: "string_2", number: 2, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
       e(String, { key: "string_3", number: 3, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),

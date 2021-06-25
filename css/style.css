@@ -88,6 +88,15 @@
   width: 800px;
 }
 
+#finger-board2 {
+  position: relative;
+}
+
+#finger-board-canvas {
+  position: absolute;
+  z-index: -1;
+}
+
 .string2 {
   display: flex;
   flex-wrap: nowrap;
@@ -126,7 +135,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   border: 2px solid black;
 }
 
