@@ -113,7 +113,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: black;
+  background-color: #333;
 }
 
 .flet2 {
@@ -136,7 +136,34 @@
   height: 16px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0);
-  border: 2px solid black;
+  border: 2px solid #333;
+}
+
+.close-string {
+  top: 3px;
+  left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  line-height: 1;
+  width: 20px;
+  height: 0.1em;
+  background: currentColor;
+  border-radius: 0.1em;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.close-string::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  transform: rotate(90deg);
 }
 
 .dropmenu {

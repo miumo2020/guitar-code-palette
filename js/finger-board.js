@@ -24,7 +24,7 @@ class String extends React.Component {
     if(this.props.press_point[this.props.number-1]==0){
       return e("div", {key: "string_"+this.props.number+"-flet_0-opened", className: "open-string2"});
     } else if(this.props.press_point[this.props.number-1]==-1){
-      return "×";
+      return e("span", {key: "string_"+this.props.number+"-flet_0-closed", className: "close-string"});
     }
   }
 
