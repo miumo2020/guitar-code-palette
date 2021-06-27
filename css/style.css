@@ -1,3 +1,18 @@
+#layout-row-1 {
+  width: 800px;
+  height: 50px;
+}
+
+#layout-row-2 {
+  width: 800px;
+  height: 190px;
+}
+
+#layout-row-3 {
+  width: 800px;
+  height: 50px;
+}
+
 .finger-board {
   display: flex;
   flex-wrap: nowrap;
@@ -94,6 +109,8 @@
 
 #finger-board-canvas {
   position: absolute;
+  width: 800px;
+  height: 190px;
   z-index: -1;
 }
 

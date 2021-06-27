@@ -357,15 +357,21 @@ class GuitarCodePalette extends React.Component {
 
   render() {
     return [
-      e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
-        e(CodeMenu, { key: "code-menu" }, []),
+      e("div", {key: "layout-row-1", id: "layout-row-1"}, [
+        e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
+          e(CodeMenu, { key: "code-menu" }, []),
+        ]),
+        e("div", { key: "display-press-point" }, [this.state.press_point]),
       ]),
-      e("div", { key: "display-press-point" }, [this.state.press_point]),
-      e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
-      e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
-      e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
-      e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
-      e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
+      e("div", {key: "layout-row-2", id: "layout-row-2"}, [
+        e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
+      ]),
+      e("div", {key: "layout-row-3", id: "layout-row-3"}, [
+        e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
+        e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
+        e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
+        e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
+      ]),
     ];
   }
 }
