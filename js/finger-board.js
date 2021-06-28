@@ -31,7 +31,7 @@ class String extends React.Component {
   render() {
     return(
       e("div", { key: "string_" + this.props.number + "-wrapper", className: "string2"}, [
-        e("div", { key: "string_" + this.props.number + "-flet_0", className: "flet2", onClick: ()=>this.press(0)}, [this.mark_open_string()]),
+        e("div", { key: "string_" + this.props.number + "-flet_0", className: "flet-0", onClick: ()=>this.press(0)}, [this.mark_open_string()]),
         e("div", { key: "string_" + this.props.number + "-flet_1", className: "flet2", onClick: ()=>this.press(1)}, [this.mark_press(1)]),
         e("div", { key: "string_" + this.props.number + "-flet_2", className: "flet2", onClick: ()=>this.press(2)}, [this.mark_press(2)]),
         e("div", { key: "string_" + this.props.number + "-flet_3", className: "flet2", onClick: ()=>this.press(3)}, [this.mark_press(3)]),
@@ -53,9 +53,44 @@ export class FingerBoard2 extends React.Component {
     this.setPressPoint = props.setPressPoint.bind(this);
   }
 
+  componentDidMount(){
+    this.drawCanvas();
+  }
+
+  drawCanvas() { 
+    let canvas = document.getElementById("finger-board-canvas");
+    if (canvas.getContext) {
+      let context = canvas.getContext("2d");
+
+      context.fillStyle = "#333";
+
+      context.fillRect(30, 15, 8, 157);
+
+      context.fillRect(30, 15,  700, 2);
+      context.fillRect(30, 46,  700, 2);
+      context.fillRect(30, 77,  700, 2);
+      context.fillRect(30, 108, 700, 2);
+      context.fillRect(30, 139, 700, 2);
+      context.fillRect(30, 170, 700, 2);
+
+      context.fillRect(68, 15, 2, 157);
+      context.fillRect(100, 15, 2, 157);
+      context.fillRect(132, 15, 2, 157);
+      context.fillRect(164, 15, 2, 157);
+      context.fillRect(196, 15, 2, 157);
+      context.fillRect(228, 15, 2, 157);
+      context.fillRect(260, 15, 2, 157);
+      context.fillRect(292, 15, 2, 157);
+      context.fillRect(324, 15, 2, 157);
+      context.fillRect(356, 15, 2, 157);
+    }
+  }
+
   render() {
     return e("div", {key: "finger-board", id: "finger-board2"}, [
-      e("canvas", {key: "finger-board-canvas", id: "finger-board-canvas"}),
+      e("div", {key: "finger-board-canvas-wrapper", id: "finger-board-canvas-wrapper"}, [
+        e("canvas", {key: "finger-board-canvas", id: "finger-board-canvas", width: "800px", height: "200px"}),
+      ]),
       e(String, { key: "string_1", number: 1, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
       e(String, { key: "string_2", number: 2, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
       e(String, { key: "string_3", number: 3, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
