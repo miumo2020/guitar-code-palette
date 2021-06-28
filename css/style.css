@@ -122,7 +122,7 @@
   flex-wrap: nowrap;
   margin-top: 1px;
   width: 700px;
-  background-color: rgba(255, 0, 0, 0.1);
+  /* background-color: rgba(255, 0, 0, 0.1); */
 }
 
 .string2-press {
@@ -140,18 +140,22 @@
   width: 30px;
   height: 30px;
   margin-right: 8px;
-  background-color: rgba(0, 0, 255, 0.1);
+  /* background-color: rgba(0, 0, 255, 0.1); */
+}
+
+.flet-0:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .flet2 {
   width: 30px;
   height: 30px;
   margin-right: 2px;
-  background-color: rgba(0, 0, 255, 0.1);
+  /* background-color: rgba(0, 0, 255, 0.1); */
 }
 
 .flet2:hover {
-  background-color: lightgray;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .open-string2 {
