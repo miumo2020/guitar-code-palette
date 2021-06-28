@@ -88,7 +88,7 @@ export class FingerBoard2 extends React.Component {
 
   render() {
     return e("div", {key: "finger-board", id: "finger-board2"}, [
-      e("div", {key: "finger-board-canvas-wrapper", id: "finger-board-canvas-wrapper"}, [
+      e("div", {key: "finger-board-canvas-wrapper", className: "canvas-wrapper"}, [
         e("canvas", {key: "finger-board-canvas", id: "finger-board-canvas", width: "800px", height: "200px"}),
       ]),
       e(String, { key: "string_1", number: 1, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
