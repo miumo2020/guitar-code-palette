@@ -83,6 +83,18 @@ export class FingerBoard2 extends React.Component {
       context.fillRect(292, 15, 2, 152);
       context.fillRect(324, 15, 2, 152);
       context.fillRect(356, 15, 2, 152);
+
+      context.font = "20px cursive";
+      context.fillText("1", 45, 195)
+      context.fillText("2", 77, 195)
+      context.fillText("3", 109, 195)
+      context.fillText("4", 141, 195)
+      context.fillText("5", 173, 195)
+      context.fillText("6", 205, 195)
+      context.fillText("7", 237, 195)
+      context.fillText("8", 269, 195)
+      context.fillText("9", 302, 195)
+      context.fillText("10", 330, 195)
     }
   }
 
