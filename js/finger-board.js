@@ -64,25 +64,25 @@ export class FingerBoard2 extends React.Component {
 
       context.fillStyle = "#333";
 
-      context.fillRect(30, 15, 8, 157);
+      context.fillRect(30, 15, 8, 152);
 
       context.fillRect(30, 15,  700, 2);
-      context.fillRect(30, 46,  700, 2);
-      context.fillRect(30, 77,  700, 2);
-      context.fillRect(30, 108, 700, 2);
-      context.fillRect(30, 139, 700, 2);
-      context.fillRect(30, 170, 700, 2);
+      context.fillRect(30, 45,  700, 2);
+      context.fillRect(30, 75,  700, 2);
+      context.fillRect(30, 105, 700, 2);
+      context.fillRect(30, 135, 700, 2);
+      context.fillRect(30, 165, 700, 2);
 
-      context.fillRect(68, 15, 2, 157);
-      context.fillRect(100, 15, 2, 157);
-      context.fillRect(132, 15, 2, 157);
-      context.fillRect(164, 15, 2, 157);
-      context.fillRect(196, 15, 2, 157);
-      context.fillRect(228, 15, 2, 157);
-      context.fillRect(260, 15, 2, 157);
-      context.fillRect(292, 15, 2, 157);
-      context.fillRect(324, 15, 2, 157);
-      context.fillRect(356, 15, 2, 157);
+      context.fillRect(68, 15, 2, 152);
+      context.fillRect(100, 15, 2, 152);
+      context.fillRect(132, 15, 2, 152);
+      context.fillRect(164, 15, 2, 152);
+      context.fillRect(196, 15, 2, 152);
+      context.fillRect(228, 15, 2, 152);
+      context.fillRect(260, 15, 2, 152);
+      context.fillRect(292, 15, 2, 152);
+      context.fillRect(324, 15, 2, 152);
+      context.fillRect(356, 15, 2, 152);
     }
   }
 

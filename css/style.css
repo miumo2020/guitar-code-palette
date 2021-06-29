@@ -120,7 +120,6 @@
 .string2 {
   display: flex;
   flex-wrap: nowrap;
-  margin-top: 1px;
   width: 700px;
   /* background-color: rgba(255, 0, 0, 0.1); */
 }
@@ -195,6 +194,10 @@
   background: inherit;
   border-radius: inherit;
   transform: rotate(90deg);
+}
+
+.flet-numbers {
+  display: flex;
 }
 
 .dropmenu {
