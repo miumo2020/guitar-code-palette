@@ -16,13 +16,13 @@ class String extends React.Component {
   mark_press(pos) {
     return(
       this.props.press_point[this.props.number-1] == pos ? 
-      e("div", {key: "string_"+this.props.number+"-flet_"+pos+"-pressed", className: "string2-press"}, [] ) : ""
+      e("div", {key: "string_"+this.props.number+"-flet_"+pos+"-pressed", className: "string-press"}, [] ) : ""
     )
   }
 
   mark_open_string() {
     if(this.props.press_point[this.props.number-1]==0){
-      return e("div", {key: "string_"+this.props.number+"-flet_0-opened", className: "open-string2"});
+      return e("div", {key: "string_"+this.props.number+"-flet_0-opened", className: "open-string"});
     } else if(this.props.press_point[this.props.number-1]==-1){
       return e("span", {key: "string_"+this.props.number+"-flet_0-closed", className: "close-string"});
     }
@@ -30,18 +30,18 @@ class String extends React.Component {
 
   render() {
     return(
-      e("div", { key: "string_" + this.props.number + "-wrapper", className: "string2"}, [
+      e("div", { key: "string_" + this.props.number + "-wrapper", className: "string"}, [
         e("div", { key: "string_" + this.props.number + "-flet_0", className: "flet-0", onClick: ()=>this.press(0)}, [this.mark_open_string()]),
-        e("div", { key: "string_" + this.props.number + "-flet_1", className: "flet2", onClick: ()=>this.press(1)}, [this.mark_press(1)]),
-        e("div", { key: "string_" + this.props.number + "-flet_2", className: "flet2", onClick: ()=>this.press(2)}, [this.mark_press(2)]),
-        e("div", { key: "string_" + this.props.number + "-flet_3", className: "flet2", onClick: ()=>this.press(3)}, [this.mark_press(3)]),
-        e("div", { key: "string_" + this.props.number + "-flet_4", className: "flet2", onClick: ()=>this.press(4)}, [this.mark_press(4)]),      
-        e("div", { key: "string_" + this.props.number + "-flet_5", className: "flet2", onClick: ()=>this.press(5)}, [this.mark_press(5)]),      
-        e("div", { key: "string_" + this.props.number + "-flet_6", className: "flet2", onClick: ()=>this.press(6)}, [this.mark_press(6)]),      
-        e("div", { key: "string_" + this.props.number + "-flet_7", className: "flet2", onClick: ()=>this.press(7)}, [this.mark_press(7)]),      
-        e("div", { key: "string_" + this.props.number + "-flet_8", className: "flet2", onClick: ()=>this.press(8)}, [this.mark_press(8)]),      
-        e("div", { key: "string_" + this.props.number + "-flet_9", className: "flet2", onClick: ()=>this.press(9)}, [this.mark_press(9)]),      
-        e("div", { key: "string_" + this.props.number + "-flet_10", className: "flet2", onClick: ()=>this.press(10)}, [this.mark_press(10)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_1", className: "flet", onClick: ()=>this.press(1)}, [this.mark_press(1)]),
+        e("div", { key: "string_" + this.props.number + "-flet_2", className: "flet", onClick: ()=>this.press(2)}, [this.mark_press(2)]),
+        e("div", { key: "string_" + this.props.number + "-flet_3", className: "flet", onClick: ()=>this.press(3)}, [this.mark_press(3)]),
+        e("div", { key: "string_" + this.props.number + "-flet_4", className: "flet", onClick: ()=>this.press(4)}, [this.mark_press(4)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_5", className: "flet", onClick: ()=>this.press(5)}, [this.mark_press(5)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_6", className: "flet", onClick: ()=>this.press(6)}, [this.mark_press(6)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_7", className: "flet", onClick: ()=>this.press(7)}, [this.mark_press(7)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_8", className: "flet", onClick: ()=>this.press(8)}, [this.mark_press(8)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_9", className: "flet", onClick: ()=>this.press(9)}, [this.mark_press(9)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_10", className: "flet", onClick: ()=>this.press(10)}, [this.mark_press(10)]),      
       ])
     )
   }
@@ -99,7 +99,7 @@ export class FingerBoard2 extends React.Component {
   }
 
   render() {
-    return e("div", {key: "finger-board", id: "finger-board2"}, [
+    return e("div", {key: "finger-board", id: "finger-board"}, [
       e("div", {key: "finger-board-canvas-wrapper", className: "canvas-wrapper"}, [
         e("canvas", {key: "finger-board-canvas", id: "finger-board-canvas", width: "800px", height: "200px"}),
       ]),

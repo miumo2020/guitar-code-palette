@@ -13,7 +13,7 @@
   height: 50px;
 }
 
-#finger-board2 {
+#finger-board {
   position: relative;
 }
 
@@ -27,14 +27,14 @@
   z-index: -1;
 }
 
-.string2 {
+.string {
   display: flex;
   flex-wrap: nowrap;
   width: 700px;
   /* background-color: rgba(255, 0, 0, 0.1); */
 }
 
-.string2-press {
+.string-press {
   position: relative;
   top: 5px;
   left: 5px;
@@ -56,18 +56,18 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.flet2 {
+.flet {
   width: 30px;
   height: 30px;
   margin-right: 2px;
   /* background-color: rgba(0, 0, 255, 0.1); */
 }
 
-.flet2:hover {
+.flet:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.open-string2 {
+.open-string {
   position: relative;
   top: 5px;
   left: 5px;

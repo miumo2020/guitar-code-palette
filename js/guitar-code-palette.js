@@ -194,4 +194,4 @@ class GuitarCodePalette extends React.Component {
   }
 }
 
-ReactDOM.render(e(GuitarCodePalette), document.getElementById("app2"));
+ReactDOM.render(e(GuitarCodePalette), document.getElementById("app"));
