@@ -297,10 +297,52 @@ class GuitarCodePalette extends React.Component {
     this.state = {
       tuning: [52, 47, 43, 38, 33, 28],
       press_point: [-1, -1, -1, -1, -1, -1], // -1:押弦なし　0:解放
-      code_display: "---",
     };
     this.setPressPoint = this.setPressPoint.bind(this);
   }
+
+  SCALE_DICT = {
+    "(omit3)": [0, 7],
+    maj: [0, 4, 7],
+    m: [0, 3, 7],
+    "(♭5)": [0, 4, 6],
+    "m(♭5)": [0, 3, 6],
+    aug: [0, 4, 8],
+    sus4: [0, 5, 7],
+    sus2: [0, 2, 7],  // add9(omit3)
+
+    6: [0, 4, 7, 9],
+    m6: [0, 3, 7, 9],
+    7: [0, 4, 7, 10],
+    m7: [0, 3, 7, 10],
+    M7: [0, 4, 7, 11],
+    mM7: [0, 3, 7, 11],
+    "7(♭5)": [0, 4, 6, 10],
+    "m7(♭5)": [0, 3, 6, 10],
+    "M7(♭5)": [0, 4, 6, 11],
+    "mM7(♭5)": [0, 3, 6, 11],
+    "7sus4": [0, 5, 7, 10],
+    dim7: [0, 3, 6, 9],
+    add9: [0, 2, 4, 7],
+    "m(add9)": [0, 2, 3, 7],
+    add4: [0, 4, 5, 7],
+    aug7: [0, 4, 8, 10],
+  };
+
+  NOTE_DICT = {
+    0: "C",
+    1: "C#",
+    2: "D",
+    3: "D#",
+    4: "E",
+    5: "F",
+    6: "F#",
+    7: "G",
+    8: "G#",
+    9: "A",
+    10: "A#",
+    11: "B",
+  };
 
   setPressPoint = (string, point) => {
     let new_point = -1;
@@ -311,6 +353,64 @@ class GuitarCodePalette extends React.Component {
     new_press_point[string - 1] = new_point;
     this.setState({ press_point: new_press_point });
   };
+
+  predictCode() {
+    let root = this.getRoot();
+    let scale = this.getNowScale();
+    console.log(scale);
+    const code = Object.keys(this.SCALE_DICT).filter((key) => {
+      return this.SCALE_DICT[key].toString() === scale.toString();
+    });
+    if (code != "") {
+      return root + code;
+    } else {
+      return "---";
+    }
+  }
+
+  getRoot() {
+    let scale = [];
+    for (let j = 0; j <= MAX_STRING - 1; j++) {
+      if (this.state.press_point[j] >= 0) {
+        scale.push(this.state.tuning[j] + this.state.press_point[j]);
+      }
+    }
+    scale.sort(function (a, b) {
+      return a < b ? -1 : 1;
+    });
+    let root = scale[0];
+    root = root % 12;
+    return this.NOTE_DICT[root];
+  }
+
+  getNowScale() {
+    let scale = [];
+    for (let j = 0; j <= MAX_STRING - 1; j++) {
+      if (this.state.press_point[j] >= 0) {
+        scale.push(this.state.tuning[j] + this.state.press_point[j]);
+      }
+    }
+    scale.sort(function (a, b) {
+      return a < b ? -1 : 1;
+    });
+    let root = scale[0];
+    for (let i = 0; i < scale.length; i++) {
+      scale[i] = scale[i] - root;
+    }
+    for (let i = 0; i < scale.length; i++) {
+      const octave_down = scale[i] - 12;
+      if (12 > octave_down && octave_down >= 0) {
+        scale[i] = scale[i] - 12;
+      } else if (24 > octave_down && octave_down >= 12) {
+        scale[i] = scale[i] - 24;
+      }
+    }
+    scale = Array.from(new Set(scale));
+    scale.sort(function (a, b) {
+      return a < b ? -1 : 1;
+    });
+    return scale;
+  }
 
   reset() {
     this.setState({ press_point: [-1, -1, -1, -1, -1, -1] });
@@ -362,6 +462,7 @@ class GuitarCodePalette extends React.Component {
           e(CodeMenu, { key: "code-menu" }, []),
         ]),
         e("div", { key: "display-press-point" }, [this.state.press_point]),
+        e("div", { key: "code-display" }, [this.predictCode()]),
       ]),
       e("div", {key: "layout-row-2", id: "layout-row-2"}, [
         e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
