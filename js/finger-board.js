@@ -42,6 +42,11 @@ class String extends React.Component {
         e("div", { key: "string_" + this.props.number + "-flet_8", className: "flet", onClick: ()=>this.press(8)}, [this.mark_press(8)]),      
         e("div", { key: "string_" + this.props.number + "-flet_9", className: "flet", onClick: ()=>this.press(9)}, [this.mark_press(9)]),      
         e("div", { key: "string_" + this.props.number + "-flet_10", className: "flet", onClick: ()=>this.press(10)}, [this.mark_press(10)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_11", className: "flet", onClick: ()=>this.press(11)}, [this.mark_press(11)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_12", className: "flet", onClick: ()=>this.press(12)}, [this.mark_press(12)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_13", className: "flet", onClick: ()=>this.press(13)}, [this.mark_press(13)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_14", className: "flet", onClick: ()=>this.press(14)}, [this.mark_press(14)]),      
+        e("div", { key: "string_" + this.props.number + "-flet_15", className: "flet", onClick: ()=>this.press(15)}, [this.mark_press(15)]),      
       ])
     )
   }
@@ -83,18 +88,28 @@ export class FingerBoard2 extends React.Component {
       context.fillRect(292, 15, 2, 152);
       context.fillRect(324, 15, 2, 152);
       context.fillRect(356, 15, 2, 152);
+      context.fillRect(388, 15, 2, 152);
+      context.fillRect(420, 15, 2, 152);
+      context.fillRect(452, 15, 2, 152);
+      context.fillRect(484, 15, 2, 152);
+      context.fillRect(516, 15, 2, 152);
 
-      context.font = "20px cursive";
-      context.fillText("1", 45, 195)
-      context.fillText("2", 77, 195)
-      context.fillText("3", 109, 195)
-      context.fillText("4", 141, 195)
-      context.fillText("5", 173, 195)
-      context.fillText("6", 205, 195)
-      context.fillText("7", 237, 195)
-      context.fillText("8", 269, 195)
-      context.fillText("9", 302, 195)
-      context.fillText("10", 330, 195)
+      context.font = "18px cursive";
+      context.fillText("1", 45, 195);
+      context.fillText("2", 77, 195);
+      context.fillText("3", 109, 195);
+      context.fillText("4", 141, 195);
+      context.fillText("5", 173, 195);
+      context.fillText("6", 205, 195);
+      context.fillText("7", 237, 195);
+      context.fillText("8", 269, 195);
+      context.fillText("9", 302, 195);
+      context.fillText("10", 330, 195);
+      context.fillText("11", 362, 195);
+      context.fillText("12", 394, 195);
+      context.fillText("13", 426, 195);
+      context.fillText("14", 458, 195);
+      context.fillText("15", 490, 195);
     }
   }
 
