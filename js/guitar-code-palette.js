@@ -19,31 +19,31 @@ class GuitarCodePalette extends React.Component {
   }
 
   SCALE_DICT = {
-    "(omit3)": [0, 7],
-    maj: [0, 4, 7],
-    m: [0, 3, 7],
-    "(b5)": [0, 4, 6],
-    "m(b5)": [0, 3, 6],
-    aug: [0, 4, 8],
-    sus4: [0, 5, 7],
-    sus2: [0, 2, 7], // add9(omit3)
+    "0,7": "(omit3)",
+    "0,4,7": "maj",
+    "0,3,7": "m",
+    "0,4,6": "(b5)",
+    "0,3,6": "m(b5)",
+    "0,4,8": "aug",
+    "0,5,7": "sus4",
+    "0,2,7": "sus2", // add9(omit3)
 
-    6: [0, 4, 7, 9],
-    m6: [0, 3, 7, 9],
-    7: [0, 4, 7, 10],
-    m7: [0, 3, 7, 10],
-    M7: [0, 4, 7, 11],
-    mM7: [0, 3, 7, 11],
-    "7(b5)": [0, 4, 6, 10],
-    "m7(b5)": [0, 3, 6, 10],
-    "M7(b5)": [0, 4, 6, 11],
-    "mM7(b5)": [0, 3, 6, 11],
-    "7sus4": [0, 5, 7, 10],
-    dim7: [0, 3, 6, 9],
-    add9: [0, 2, 4, 7],
-    "m(add9)": [0, 2, 3, 7],
-    add4: [0, 4, 5, 7],
-    aug7: [0, 4, 8, 10],
+    "0,4,7,9": "6",
+    "0,3,7,9": "m6",
+    "0,4,7,10": "7",
+    "0,3,7,10": "m7",
+    "0,4,7,11": "M7",
+    "0,3,7,11": "mM7",
+    "0,4,6,10": "7(b5)",
+    "0,3,6,10": "m7(b5)",
+    "0,4,6,11": "M7(b5)",
+    "0,3,6,11": "mM7(b5)",
+    "0,5,7,10": "7sus4",
+    "0,3,6,9": "dim7",
+    "0,2,4,7": "add9",
+    "0,2,3,7": "m(add9)",
+    "0,4,5,7": "add4",
+    "0,4,8,10": "aug7",
   };
 
   NOTE_DICT = {
@@ -79,11 +79,9 @@ class GuitarCodePalette extends React.Component {
   predictCode() {
     let root = this.getRoot();
     let scale = this.getNowScale();
-    console.log(scale);
-    const code = Object.keys(this.SCALE_DICT).filter((key) => {
-      return this.SCALE_DICT[key].toString() === scale.toString();
-    });
-    if (code != "") {
+    console.log(scale.join(','));
+    const code = this.SCALE_DICT[scale.join(',')];
+    if (code != null) {
       return root + code;
     } else {
       return "---";
