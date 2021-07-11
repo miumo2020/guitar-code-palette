@@ -15,7 +15,7 @@ class GuitarCodePalette extends React.Component {
       tuning: [52, 47, 43, 38, 33, 28],
       press_point: [-1, -1, -1, -1, -1, -1], // -1:押弦なし　0:解放
     };
-    this.setPressPoint = this.setPressPoint.bind(this);
+    this.setCode = this.setCode.bind(this);
   }
 
   SCALE_DICT = {
@@ -70,6 +70,11 @@ class GuitarCodePalette extends React.Component {
     new_press_point[string - 1] = new_point;
     this.setState({ press_point: new_press_point });
   };
+
+  setCode = (position) => {
+    let new_position = [...position];
+    this.setState({ press_point: new_position });
+  }
 
   predictCode() {
     let root = this.getRoot();
@@ -176,7 +181,7 @@ class GuitarCodePalette extends React.Component {
     return [
       e("div", {key: "layout-row-1", id: "layout-row-1"}, [
         e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
-          e(CodeMenu, { key: "code-menu" }, []),
+          e(CodeMenu, { key: "code-menu", setCode: this.setCode }, []),
         ]),
         e("div", { key: "display-press-point" }, [this.state.press_point]),
         e("div", { key: "code-display" }, [this.predictCode()]),
