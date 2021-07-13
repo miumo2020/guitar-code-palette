@@ -23,7 +23,7 @@ class GuitarCodePalette extends React.Component {
     "0,4,7": "maj",
     "0,3,7": "m",
     "0,4,6": "(b5)",
-    "0,3,6": "m(b5)",
+    "0,3,6": "dim",
     "0,4,8": "aug",
     "0,5,7": "sus4",
     "0,2,7": "sus2", // add9(omit3)
