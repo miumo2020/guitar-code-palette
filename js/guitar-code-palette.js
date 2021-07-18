@@ -195,8 +195,7 @@ class GuitarCodePalette extends React.Component {
           e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
         ]),
       ]),
-      e("div", {key: "layout-side", id: "layout-side"}, ["side-menu"]),
-      e("div", {key:"1324", className: "test"}),
+      e("div", {key: "layout-side", id: "layout-side"}, ["side-menu "]),
     ];
   }
 }
