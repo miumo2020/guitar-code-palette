@@ -35,11 +35,9 @@ export class CodeMenu extends React.Component {
       e("ul", {key: "Code ul"}, [
         e(Code, {key: "C", name: "C", positions: [[0,1,0,2,3,-1]], setCode: this.setCode, children: [
           e(Code, {key: "Cmaj", name: "Cmaj", positions: [[0,1,0,2,3,-1]], setCode: this.setCode, children: [
-            // TODO: コード推測で表示されないコード
             e(Code, {key: "C6", name: "C6", positions: [[0,1,2,2,3,-1]], setCode: this.setCode, children: [
               e(Code, {key: "C6(9)", name: "C6(9)", positions: [], setCode: this.setCode, children: []}),              
             ],}),
-            // TODO: コード推測で表示されないコード
             e(Code, {key: "C7", name: "C7", positions: [[0,1,3,2,3,-1]], setCode: this.setCode, children: [
               e(Code, {key: "C7(b9)", name: "C7(b9)", positions: [], setCode: this.setCode, children: []}),
               e(Code, {key: "C7(9)", name: "C7(9)", positions: [], setCode: this.setCode, children: []}),
