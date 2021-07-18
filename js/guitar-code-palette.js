@@ -1,6 +1,6 @@
 "use strict";
 
-import { FingerBoard2 } from "./finger-board.js";
+import { FingerBoard } from "./finger-board.js";
 import { CodeMenu } from "./code-menu.js";
 
 const MAX_STRING = 6;
@@ -188,7 +188,7 @@ class GuitarCodePalette extends React.Component {
           e("div", { key: "code-display" }, [this.predictCode()]),
         ]),
         e("div", {key: "layout-row-2", id: "layout-row-2"}, [
-          e(FingerBoard2, { key: "finger-board-2", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
+          e(FingerBoard, { key: "finger-board", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
         ]),
         e("div", {key: "layout-row-3", id: "layout-row-3"}, [
           e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
