@@ -5,29 +5,34 @@ const e = React.createElement;
 export class CodePalette extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+        selected_palette: 1,
+    };
+    this.selectPalette = this.selectPalette.bind(this);
+  }
+
+  selectPalette(num) {
+    this.setState({ selected_palette: num });
+  }
+
+  renderPalettes() {
+    let result = [];
+    for (let i=1; i<=16; i++) {
+      let class_name = "palette";
+      if (i == this.state.selected_palette) {
+        class_name = "selected-palette";
+      }
+      result.push(
+        e("div", {key: "palette-"+String(i), className: class_name, onClick: () => this.selectPalette(i)}, [])
+      );
+    }
+    return result;
   }
 
   render() {
     return [
       e("div", {key: "code-palette"}, ["Code Palette"]),
-      e("div", {key: "code-palette-row1", className: "wrapper-flex"}, [
-        e("div", {key: "palette-1", className: "palette"}, []),
-        e("div", {key: "palette-2", className: "palette"}, []),
-        e("div", {key: "palette-3", className: "palette"}, []),
-        e("div", {key: "palette-4", className: "palette"}, []),
-        e("div", {key: "palette-5", className: "palette"}, []),
-        e("div", {key: "palette-6", className: "palette"}, []),
-        e("div", {key: "palette-7", className: "palette"}, []),
-        e("div", {key: "palette-8", className: "palette"}, []),
-        e("div", {key: "palette-9", className: "palette"}, []),
-        e("div", {key: "palette-10", className: "palette"}, []),
-        e("div", {key: "palette-11", className: "palette"}, []),
-        e("div", {key: "palette-12", className: "palette"}, []),
-        e("div", {key: "palette-13", className: "palette"}, []),
-        e("div", {key: "palette-14", className: "palette"}, []),
-        e("div", {key: "palette-15", className: "palette"}, []),
-        e("div", {key: "palette-16", className: "palette"}, []),
-      ]),          
+      e("div", {key: "palette-wrapper", className: "wrapper-flex"}, this.renderPalettes()),          
     ];
   }
 }
