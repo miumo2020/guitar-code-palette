@@ -178,6 +178,10 @@ class GuitarCodePalette extends React.Component {
     }
   }
 
+  register() {
+    console.log(this.state.press_point, this.predictCode());
+  }
+
   render() {
     return [
       e("div", {key: "layout-main", id: "layout-main"}, [
@@ -196,6 +200,7 @@ class GuitarCodePalette extends React.Component {
           e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
           e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
           e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
+          e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
         ]),
       ]),
       e("div", {key: "layout-side", id: "layout-side"}, [
