@@ -29,6 +29,10 @@ export class CodePalette extends React.Component {
     return result;
   }
 
+  registerPalette(code_name, position) {
+    console.log(code_name, position);
+  }
+
   render() {
     return [
       e("div", {key: "code-palette"}, ["Code Palette"]),
