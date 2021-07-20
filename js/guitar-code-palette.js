@@ -3,6 +3,7 @@
 import { FingerBoard } from "./finger-board.js";
 import { CodeMenu } from "./code-menu.js";
 import { CodePalette } from "./code-palette.js";
+import { CodeScore } from "./code-score.js";
 
 const MAX_STRING = 6;
 const MAX_FLET = 15;
@@ -206,6 +207,9 @@ class GuitarCodePalette extends React.Component {
           e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
           e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
           e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
+        ]),
+        e("div", {key: "layout-row-4", id: "layout-row-4"}, [
+          e(CodeScore, {key: "code-score"}, []),
         ]),
       ]),
       e("div", {key: "layout-side", id: "layout-side"}, [

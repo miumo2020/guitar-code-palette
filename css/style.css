@@ -29,6 +29,13 @@
   height: 50px;
 }
 
+#layout-row-4 {
+  width: 700px;
+  height: 700px;
+  margin-top: 10px;
+  background-color: rgba(230, 230, 230, 1.0);
+}
+
 #finger-board {
   position: relative;
 }
