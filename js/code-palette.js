@@ -78,12 +78,22 @@ export class CodePalette extends React.Component {
     // 1弦でも押弦がある場合、パレット登録
     // パレット0から順番に参照し、空いているパレットに登録する
     let new_code_palette = [...this.state.code_palette];
-    for (let i = 0; i < MAX_PALETTE; i++) {
-      if ((this.state.code_palette[i]["code_name"] == null) && (this.state.code_palette[i]["position"] == null)) {
-        new_code_palette[i] = { code_name: code_name, position: position };
+    let count;
+    for (count = 0; count < MAX_PALETTE; count++) {
+      if ((this.state.code_palette[count]["code_name"] == null) && (this.state.code_palette[count]["position"] == null)) {
+        new_code_palette[count] = { code_name: code_name, position: position };
         break;
       }
     }
+
+    // 全パレット登録済みだった場合、選択中パレットに上書きするかダイアログを表示
+    if (count == MAX_PALETTE) {
+      let sel_num = this.state.selected_palette;
+      if (confirm("パレットに空きがありません。\n現在選択中のパレットに上書きしますか？\n選択中パレット：" + String(sel_num + 1) + "　" + String(this.state.code_palette[sel_num]["code_name"]))) {
+        new_code_palette[sel_num] = { code_name: code_name, position: position };
+      }
+    }
+
     this.setState({ code_palette: new_code_palette });
   }
 
