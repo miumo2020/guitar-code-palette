@@ -67,16 +67,16 @@ export class FingerBoard extends React.Component {
     if (canvas.getContext) {
       let context = canvas.getContext("2d");
 
-      context.fillStyle = "#333";
+      context.fillStyle = "#888";
 
       context.fillRect(30, 15, 8, 152);
 
-      context.fillRect(30, 15,  700, 2);
-      context.fillRect(30, 45,  700, 2);
-      context.fillRect(30, 75,  700, 2);
-      context.fillRect(30, 105, 700, 2);
-      context.fillRect(30, 135, 700, 2);
-      context.fillRect(30, 165, 700, 2);
+      context.fillRect(30, 15,  488, 2);
+      context.fillRect(30, 45,  488, 2);
+      context.fillRect(30, 75,  488, 2);
+      context.fillRect(30, 105, 488, 2);
+      context.fillRect(30, 135, 488, 2);
+      context.fillRect(30, 165, 488, 2);
 
       context.fillRect(68, 15, 2, 152);
       context.fillRect(100, 15, 2, 152);
@@ -93,6 +93,8 @@ export class FingerBoard extends React.Component {
       context.fillRect(452, 15, 2, 152);
       context.fillRect(484, 15, 2, 152);
       context.fillRect(516, 15, 2, 152);
+
+      context.fillStyle = "#333";
 
       context.font = "18px cursive";
       context.fillText("1", 45, 195);
