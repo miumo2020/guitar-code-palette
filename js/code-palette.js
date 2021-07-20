@@ -25,7 +25,7 @@ class Code extends React.Component {
 
     let code_name = this.props.codeName
     if (code_name == null) {
-      code_name = "Unknown Code"
+      code_name = "Unknown"
     }
     return [code_name, e("br", { key: "br" }), this.props.position];
   }

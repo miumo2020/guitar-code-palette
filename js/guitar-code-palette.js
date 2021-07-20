@@ -91,7 +91,7 @@ class GuitarCodePalette extends React.Component {
     if (code != null) {
       this.code_name =  root + code;
     } else {
-      this.code_name = null;
+      this.code_name = "Unknown";
     }
     return this.code_name;
   }
