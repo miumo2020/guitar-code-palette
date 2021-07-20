@@ -4,6 +4,17 @@ const e = React.createElement;
 
 const MAX_PALETTE = 16;
 
+// 配列比較用関数
+const equalArray = function (a1, a2) {
+  var i = a1.length;
+  if (i != a2.length) return false;
+
+  while (i--) {
+    if (a1[i] !== a2[i]) return false;
+  }
+  return true;
+};
+
 class Code extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +63,17 @@ export class CodePalette extends React.Component {
 
   registerPalette(code_name, position) {
     // 全弦押弦なしの場合、処理終了
-    if (position.every((element) => { return element == -1; })) return;
+    if (equalArray(position, [-1, -1, -1, -1, -1, -1])) return;
+
+    // 既に同じコードがパレットに登録されている場合、アラート表示
+    for (let i = 0; i < MAX_PALETTE; i++) {
+      if (this.state.code_palette[i]["position"] == null) continue;
+      if (equalArray(position, this.state.code_palette[i]["position"])) {
+        alert("パレット" + String(i + 1) + "に同じコードが登録されています。\n" +
+          "コード名：" + this.state.code_palette[i]["code_name"]);
+        return;
+      }
+    }
 
     // 1弦でも押弦がある場合、パレット登録
     // パレット0から順番に参照し、空いているパレットに登録する
