@@ -276,17 +276,18 @@ div.btn--green:hover {
 
 .score-line {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .score-code {
   width: 150px;
   height: 100px;
   margin-left: -2px;
+  margin-bottom: 20px;
   border: 2px solid #888;
   background-color: #fff;
 }
 
 .score-code:hover {
-  background-color: rgba(0, 0, 255, 0.1);
+  background-color: rgba(0, 0, 255, 0.2);
 }

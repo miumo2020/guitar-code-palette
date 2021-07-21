@@ -15,6 +15,7 @@ const equalArray = function (a1, a2) {
   return true;
 };
 
+// TODO: 共通化
 class Code extends React.Component {
   constructor(props) {
     super(props);
