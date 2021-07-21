@@ -33,7 +33,7 @@
   width: 700px;
   height: 700px;
   margin-top: 10px;
-  background-color: rgba(230, 230, 230, 1.0);
+  /* background-color: rgba(230, 230, 230, 1.0); */
 }
 
 #finger-board {
@@ -272,4 +272,21 @@ div.btn--green:hover {
   border: 5px solid rgba(0, 255, 0, 0.5);
   border-radius: 5px;
   background-color: #fff;
+}
+
+.score-line {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.score-code {
+  width: 150px;
+  height: 100px;
+  margin-left: -2px;
+  border: 2px solid #888;
+  background-color: #fff;
+}
+
+.score-code:hover {
+  background-color: rgba(0, 0, 255, 0.1);
 }
