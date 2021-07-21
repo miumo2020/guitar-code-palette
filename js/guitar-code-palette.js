@@ -188,6 +188,10 @@ class GuitarCodePalette extends React.Component {
     this.ref.current.registerPalette(this.code_name, this.state.press_point);
   }
 
+  getSelectedCodePalette = () => {
+    return this.ref.current.getSelectedCodePalette();
+  }
+
   render() {
     return [
       e("div", {key: "layout-main", id: "layout-main"}, [
@@ -209,7 +213,7 @@ class GuitarCodePalette extends React.Component {
           e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
         ]),
         e("div", {key: "layout-row-4", id: "layout-row-4"}, [
-          e(CodeScore, {key: "code-score"}, []),
+          e(CodeScore, {key: "code-score", getSelectedCodePalette: this.getSelectedCodePalette}, []),
         ]),
       ]),
       e("div", {key: "layout-side", id: "layout-side"}, [

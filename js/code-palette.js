@@ -46,6 +46,10 @@ export class CodePalette extends React.Component {
     this.setState({ selected_palette: num });
   }
 
+  getSelectedCodePalette() {
+    return this.state.code_palette[this.state.selected_palette];
+  }
+
   renderPalettes() {
     let result = [];
     for (let i = 0; i < MAX_PALETTE; i++) {
