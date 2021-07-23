@@ -1,5 +1,7 @@
 "use strict";
 
+import { CodeIcon } from "./code-icon.js";
+
 const e = React.createElement;
 
 const MAX_PALETTE = 16;
@@ -14,23 +16,6 @@ const equalArray = function (a1, a2) {
   }
   return true;
 };
-
-// TODO: 共通化
-class Code extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    if (this.props.position == null) return "";
-
-    let code_name = this.props.codeName
-    if (code_name == null) {
-      code_name = "Unknown"
-    }
-    return [code_name, e("br", { key: "br" }), this.props.position];
-  }
-}
 
 export class CodePalette extends React.Component {
   constructor(props) {
@@ -59,7 +44,7 @@ export class CodePalette extends React.Component {
       }
       result.push(
         e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i) }, [
-          e(Code, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
+          e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
         ])
       );
     }

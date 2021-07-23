@@ -1,23 +1,8 @@
 "use strict";
 
+import { CodeIcon } from "./code-icon.js";
+
 const e = React.createElement;
-
-// TODO: 共通化
-class Code extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    if (this.props.position == null) return "";
-
-    let code_name = this.props.codeName
-    if (code_name == null) {
-      code_name = "Unknown"
-    }
-    return [code_name, e("br", { key: "br" }), this.props.position];
-  }
-}
 
 export class CodeScore extends React.Component {
   constructor(props) {
@@ -41,7 +26,7 @@ export class CodeScore extends React.Component {
     for (let i = 0; i < 16; i++) {
       scores.push(
         e("div", { key: "score-code-" + String(i), className: "score-code", onClick: () => this.drawCode(i) }, [
-          e(Code, { key: "code-" + String(i), codeName: this.state.score[i]["code_name"], position: this.state.score[i]["position"], })
+          e(CodeIcon, { key: "code-" + String(i), codeName: this.state.score[i]["code_name"], position: this.state.score[i]["position"], })
         ]),
       );
     }
