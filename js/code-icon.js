@@ -57,6 +57,54 @@ export class CodeIcon extends React.Component {
     return retval;
   }
 
+  displayPressPosition(min_flet) {
+    let format = [
+      [
+        e("circle", {cx: 18, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 18, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 18, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 18, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 18, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 18, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+      ],
+      [
+        e("circle", {cx: 29, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 29, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 29, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 29, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 29, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 29, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+      ],
+      [
+        e("circle", {cx: 40, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 40, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 40, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 40, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 40, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 40, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+      ],
+      [
+        e("circle", {cx: 51, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 51, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 51, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 51, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 51, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+        e("circle", {cx: 51, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
+      ]
+    ];
+
+    // 最小フレット番号を基準に何フレット目を押さえているか
+    let fixed_position = this.props.position.map((val)=>val-(min_flet-1));
+    let retval = [];
+    for (let i = 0; i < 6; i++) {
+      let pos = fixed_position[i];
+      if (pos >= 1) {
+        retval.push(format[pos-1][i]);
+      }
+    }
+    return retval;
+  }
+
   makeSvg() {
     // 最大フレット番号と、開放弦・押弦なしを除いた最小フレット番号を取得
     let max_flet = this.props.position.reduce((a,b)=>a>b?a:b);
@@ -118,27 +166,7 @@ export class CodeIcon extends React.Component {
         this.displayCloseString(),
 
         // 押弦
-        // e("circle", {cx: 18, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        e("circle", {cx: 18, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 18, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 18, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 18, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 18, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-
-        // e("circle", {cx: 29, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 29, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 29, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        e("circle", {cx: 29, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 29, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 29, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-
-        // e("circle", {cx: 40, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 40, cy: 13, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 40, cy: 21, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 40, cy: 29, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        e("circle", {cx: 40, cy: 37, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-        // e("circle", {cx: 40, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
-
+        this.displayPressPosition(min_flet),
       ])
     ];
   }
