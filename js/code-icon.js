@@ -13,7 +13,7 @@ export class CodeIcon extends React.Component {
     }
   }
 
-  displayFlet0() {
+  displayOpenString() {
     let format = [
       e("circle", {cx: 5, cy: 5, r: 3, fill: "transparent", stroke: "#333", strokeWidth: "1px"}),
       e("circle", {cx: 5, cy: 13, r: 3, fill: "transparent", stroke: "#333", strokeWidth: "1px"}),
@@ -26,6 +26,31 @@ export class CodeIcon extends React.Component {
     let retval = [];
     for (let i = 0; i < 6; i++) {
       if (this.props.position[i] == 0) {
+        retval.push(format[i]);
+      }
+    }
+    return retval;
+  }
+
+  displayCloseString() {
+    let format = [
+      [e("line", {x1: 2.5, y1: 3, x2: 7.5, y2: 8, stroke: "#333"}),
+       e("line", {x1: 7.5, y1: 3, x2: 2.5, y2: 8, stroke: "#333"})],
+      [e("line", {x1: 2.5, y1: 11, x2: 7.5, y2: 16, stroke: "#333"}),
+       e("line", {x1: 7.5, y1: 11, x2: 2.5, y2: 16, stroke: "#333"})],
+      [e("line", {x1: 2.5, y1: 19, x2: 7.5, y2: 24, stroke: "#333"}),
+       e("line", {x1: 7.5, y1: 19, x2: 2.5, y2: 24, stroke: "#333"})],
+      [e("line", {x1: 2.5, y1: 27, x2: 7.5, y2: 32, stroke: "#333"}),
+       e("line", {x1: 7.5, y1: 27, x2: 2.5, y2: 32, stroke: "#333"})],
+      [e("line", {x1: 2.5, y1: 35, x2: 7.5, y2: 40, stroke: "#333"}),
+       e("line", {x1: 7.5, y1: 35, x2: 2.5, y2: 40, stroke: "#333"})],
+      [e("line", {x1: 2.5, y1: 43, x2: 7.5, y2: 48, stroke: "#333"}),
+       e("line", {x1: 7.5, y1: 43, x2: 2.5, y2: 48, stroke: "#333"})]
+    ];
+
+    let retval = [];
+    for (let i = 0; i < 6; i++) {
+      if (this.props.position[i] == -1) {
         retval.push(format[i]);
       }
     }
@@ -87,21 +112,10 @@ export class CodeIcon extends React.Component {
         e("text", {x: 48, y: 57, fontSize: 9}, min_flet+3),
 
         // 開放弦
-        this.displayFlet0(),
+        this.displayOpenString(),
 
         // 押弦なし
-        // e("line", {x1: 2.5, y1: 3, x2: 7.5, y2: 8, stroke: "#333"}),
-        // e("line", {x1: 7.5, y1: 3, x2: 2.5, y2: 8, stroke: "#333"}),
-        // e("line", {x1: 2.5, y1: 11, x2: 7.5, y2: 16, stroke: "#333"}),
-        // e("line", {x1: 7.5, y1: 11, x2: 2.5, y2: 16, stroke: "#333"}),
-        // e("line", {x1: 2.5, y1: 19, x2: 7.5, y2: 24, stroke: "#333"}),
-        // e("line", {x1: 7.5, y1: 19, x2: 2.5, y2: 24, stroke: "#333"}),
-        // e("line", {x1: 2.5, y1: 27, x2: 7.5, y2: 32, stroke: "#333"}),
-        // e("line", {x1: 7.5, y1: 27, x2: 2.5, y2: 32, stroke: "#333"}),
-        // e("line", {x1: 2.5, y1: 35, x2: 7.5, y2: 40, stroke: "#333"}),
-        // e("line", {x1: 7.5, y1: 35, x2: 2.5, y2: 40, stroke: "#333"}),
-        e("line", {x1: 2.5, y1: 43, x2: 7.5, y2: 48, stroke: "#333"}),
-        e("line", {x1: 7.5, y1: 43, x2: 2.5, y2: 48, stroke: "#333"}),
+        this.displayCloseString(),
 
         // 押弦
         // e("circle", {cx: 18, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
