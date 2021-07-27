@@ -4,6 +4,7 @@ import { FingerBoard } from "./finger-board.js";
 import { CodeMenu } from "./code-menu.js";
 import { CodePalette } from "./code-palette.js";
 import { CodeScore } from "./code-score.js";
+import { GuitarSound } from "./guitar-sound.js";
 
 const MAX_STRING = 6;
 const MAX_FLET = 15;
@@ -23,6 +24,8 @@ class GuitarCodePalette extends React.Component {
 
     this.ref = React.createRef();
     this.register = this.register.bind(this);
+
+    this.guitar_sound = new GuitarSound();
   }
 
   SCALE_DICT = {
@@ -167,23 +170,6 @@ class GuitarCodePalette extends React.Component {
     this.setState({ press_point: new_press_point });
   }
 
-  sound() {
-    let delay_time = 40.0; // msec
-    let delay = 0;
-    for (let j = MAX_STRING; j >= 1; j--) {
-      const func = () => {
-        if (this.state.press_point[j - 1] >= 0) {
-          let audio = new Audio(
-            "js/mp3/tone_" + j + "-" + this.state.press_point[j - 1] + ".mp3"
-          );
-          audio.play();
-        }
-      };
-      setTimeout(func, delay);
-      delay = delay + delay_time;
-    }
-  }
-
   register() {
     this.ref.current.registerPalette(this.code_name, this.state.press_point);
   }
@@ -209,7 +195,7 @@ class GuitarCodePalette extends React.Component {
           e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
           e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
           e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
-          e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.sound()}}, ["♪"]),
+          e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.sound(this.state.press_point)}}, ["♪"]),
           e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
         ]),
         e("div", {key: "layout-row-4", id: "layout-row-4"}, [
