@@ -7,8 +7,24 @@ export class CodeIcon extends React.Component {
     super(props);
   }
 
-  displayNut(min_flet) {
-    if (min_flet == 1) {
+  displayFletNumber(max_flet, min_flet) {
+    let start_flet;
+    if (max_flet <= 4) {
+      start_flet = 1;
+    } else {
+      start_flet = min_flet;
+    }
+    
+    return [
+      e("text", {x: 14, y: 57, fontSize: 9}, start_flet),
+      e("text", {x: 26, y: 57, fontSize: 9}, start_flet+1),
+      e("text", {x: 37, y: 57, fontSize: 9}, start_flet+2),
+      e("text", {x: 48, y: 57, fontSize: 9}, start_flet+3),  
+    ];
+  }
+
+  displayNut(max_flet) {
+    if (max_flet <= 4) {
       return e("rect", {x: 10, y: 5, width: 3, height: 41, fill: "#888"})
     }
   }
@@ -57,7 +73,7 @@ export class CodeIcon extends React.Component {
     return retval;
   }
 
-  displayPressPosition(min_flet) {
+  displayPressPosition(max_flet, min_flet) {
     let format = [
       [
         e("circle", {cx: 18, cy: 5, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
@@ -92,9 +108,16 @@ export class CodeIcon extends React.Component {
         e("circle", {cx: 51, cy: 45, r: 3, fill: "#333", stroke: "#333", strokeWidth: "1px"}),
       ]
     ];
-
+    
+    let fixed_position;
     // 最小フレット番号を基準に何フレット目を押さえているか
-    let fixed_position = this.props.position.map((val)=>val-(min_flet-1));
+    if (max_flet > 4) {
+      fixed_position = this.props.position.map((val)=>val-(min_flet-1));
+    } else {
+      // 最大フレット番号が4以下の場合、1～4フレットを表示するので補正しない
+      fixed_position = this.props.position;
+    }
+    
     let retval = [];
     for (let i = 0; i < 6; i++) {
       let pos = fixed_position[i];
@@ -146,7 +169,7 @@ export class CodeIcon extends React.Component {
         e("rect", {x: 10, y: 45, width: 50, height: 1, fill: "#888"}),
 
         // 縦線
-        this.displayNut(min_flet),
+        this.displayNut(max_flet),
         e("rect", {x: 12, y: 5, width: 1, height: 41, fill: "#888"}),
         e("rect", {x: 23, y: 5, width: 1, height: 41, fill: "#888"}),
         e("rect", {x: 34, y: 5, width: 1, height: 41, fill: "#888"}),
@@ -154,10 +177,7 @@ export class CodeIcon extends React.Component {
         e("rect", {x: 56, y: 5, width: 1, height: 41, fill: "#888"}),
 
         // フレット番号
-        e("text", {x: 14, y: 57, fontSize: 9}, min_flet),
-        e("text", {x: 26, y: 57, fontSize: 9}, min_flet+1),
-        e("text", {x: 37, y: 57, fontSize: 9}, min_flet+2),
-        e("text", {x: 48, y: 57, fontSize: 9}, min_flet+3),
+        this.displayFletNumber(max_flet, min_flet),
 
         // 開放弦
         this.displayOpenString(),
@@ -166,7 +186,7 @@ export class CodeIcon extends React.Component {
         this.displayCloseString(),
 
         // 押弦
-        this.displayPressPosition(min_flet),
+        this.displayPressPosition(max_flet, min_flet),
       ])
     ];
   }
