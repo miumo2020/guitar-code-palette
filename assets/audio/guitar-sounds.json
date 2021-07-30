@@ -1,0 +1,490 @@
+{
+  "resources": [
+    "guitar-sounds.ogg",
+    "guitar-sounds.m4a",
+    "guitar-sounds.mp3",
+    "guitar-sounds.ac3"
+  ],
+  "spritemap": {
+    "tone_1-0": {
+      "start": 0,
+      "end": 10.057142857142857,
+      "loop": false
+    },
+    "tone_1-1": {
+      "start": 12,
+      "end": 22.057142857142857,
+      "loop": false
+    },
+    "tone_1-2": {
+      "start": 24,
+      "end": 34.05714285714286,
+      "loop": false
+    },
+    "tone_1-3": {
+      "start": 36,
+      "end": 46.05714285714286,
+      "loop": false
+    },
+    "tone_1-4": {
+      "start": 48,
+      "end": 58.05714285714286,
+      "loop": false
+    },
+    "tone_1-5": {
+      "start": 60,
+      "end": 70.05714285714285,
+      "loop": false
+    },
+    "tone_1-6": {
+      "start": 72,
+      "end": 82.05714285714285,
+      "loop": false
+    },
+    "tone_1-7": {
+      "start": 84,
+      "end": 94.05714285714285,
+      "loop": false
+    },
+    "tone_1-8": {
+      "start": 96,
+      "end": 106.05714285714285,
+      "loop": false
+    },
+    "tone_1-9": {
+      "start": 108,
+      "end": 118.05714285714285,
+      "loop": false
+    },
+    "tone_1-10": {
+      "start": 120,
+      "end": 130.05714285714285,
+      "loop": false
+    },
+    "tone_1-11": {
+      "start": 132,
+      "end": 142.05714285714285,
+      "loop": false
+    },
+    "tone_1-12": {
+      "start": 144,
+      "end": 154.05714285714285,
+      "loop": false
+    },
+    "tone_1-13": {
+      "start": 156,
+      "end": 166.05714285714285,
+      "loop": false
+    },
+    "tone_1-14": {
+      "start": 168,
+      "end": 178.05714285714285,
+      "loop": false
+    },
+    "tone_1-15": {
+      "start": 180,
+      "end": 190.05714285714285,
+      "loop": false
+    },
+    "tone_2-0": {
+      "start": 192,
+      "end": 202.05714285714285,
+      "loop": false
+    },
+    "tone_2-1": {
+      "start": 204,
+      "end": 214.05714285714285,
+      "loop": false
+    },
+    "tone_2-2": {
+      "start": 216,
+      "end": 226.05714285714285,
+      "loop": false
+    },
+    "tone_2-3": {
+      "start": 228,
+      "end": 238.05714285714285,
+      "loop": false
+    },
+    "tone_2-4": {
+      "start": 240,
+      "end": 250.05714285714285,
+      "loop": false
+    },
+    "tone_2-5": {
+      "start": 252,
+      "end": 262.0571428571429,
+      "loop": false
+    },
+    "tone_2-6": {
+      "start": 264,
+      "end": 274.0571428571429,
+      "loop": false
+    },
+    "tone_2-7": {
+      "start": 276,
+      "end": 286.0571428571429,
+      "loop": false
+    },
+    "tone_2-8": {
+      "start": 288,
+      "end": 298.0571428571429,
+      "loop": false
+    },
+    "tone_2-9": {
+      "start": 300,
+      "end": 310.0571428571429,
+      "loop": false
+    },
+    "tone_2-10": {
+      "start": 312,
+      "end": 322.0571428571429,
+      "loop": false
+    },
+    "tone_2-11": {
+      "start": 324,
+      "end": 334.0571428571429,
+      "loop": false
+    },
+    "tone_2-12": {
+      "start": 336,
+      "end": 346.0571428571429,
+      "loop": false
+    },
+    "tone_2-13": {
+      "start": 348,
+      "end": 358.0571428571429,
+      "loop": false
+    },
+    "tone_2-14": {
+      "start": 360,
+      "end": 370.0571428571429,
+      "loop": false
+    },
+    "tone_2-15": {
+      "start": 372,
+      "end": 382.0571428571429,
+      "loop": false
+    },
+    "tone_3-0": {
+      "start": 384,
+      "end": 394.0571428571429,
+      "loop": false
+    },
+    "tone_3-1": {
+      "start": 396,
+      "end": 406.0571428571429,
+      "loop": false
+    },
+    "tone_3-2": {
+      "start": 408,
+      "end": 418.0571428571429,
+      "loop": false
+    },
+    "tone_3-3": {
+      "start": 420,
+      "end": 430.0571428571429,
+      "loop": false
+    },
+    "tone_3-4": {
+      "start": 432,
+      "end": 442.0571428571429,
+      "loop": false
+    },
+    "tone_3-5": {
+      "start": 444,
+      "end": 454.0571428571429,
+      "loop": false
+    },
+    "tone_3-6": {
+      "start": 456,
+      "end": 466.0571428571429,
+      "loop": false
+    },
+    "tone_3-7": {
+      "start": 468,
+      "end": 478.0571428571429,
+      "loop": false
+    },
+    "tone_3-8": {
+      "start": 480,
+      "end": 490.0571428571429,
+      "loop": false
+    },
+    "tone_3-9": {
+      "start": 492,
+      "end": 502.0571428571429,
+      "loop": false
+    },
+    "tone_3-10": {
+      "start": 504,
+      "end": 514.0571428571428,
+      "loop": false
+    },
+    "tone_3-11": {
+      "start": 516,
+      "end": 526.0571428571428,
+      "loop": false
+    },
+    "tone_3-12": {
+      "start": 528,
+      "end": 538.0571428571428,
+      "loop": false
+    },
+    "tone_3-13": {
+      "start": 540,
+      "end": 550.0571428571428,
+      "loop": false
+    },
+    "tone_3-14": {
+      "start": 552,
+      "end": 562.0571428571428,
+      "loop": false
+    },
+    "tone_3-15": {
+      "start": 564,
+      "end": 574.0571428571428,
+      "loop": false
+    },
+    "tone_4-0": {
+      "start": 576,
+      "end": 586.0571428571428,
+      "loop": false
+    },
+    "tone_4-1": {
+      "start": 588,
+      "end": 598.0571428571428,
+      "loop": false
+    },
+    "tone_4-2": {
+      "start": 600,
+      "end": 610.0571428571428,
+      "loop": false
+    },
+    "tone_4-3": {
+      "start": 612,
+      "end": 622.0571428571428,
+      "loop": false
+    },
+    "tone_4-4": {
+      "start": 624,
+      "end": 634.0571428571428,
+      "loop": false
+    },
+    "tone_4-5": {
+      "start": 636,
+      "end": 646.0571428571428,
+      "loop": false
+    },
+    "tone_4-6": {
+      "start": 648,
+      "end": 658.0571428571428,
+      "loop": false
+    },
+    "tone_4-7": {
+      "start": 660,
+      "end": 670.0571428571428,
+      "loop": false
+    },
+    "tone_4-8": {
+      "start": 672,
+      "end": 682.0571428571428,
+      "loop": false
+    },
+    "tone_4-9": {
+      "start": 684,
+      "end": 694.0571428571428,
+      "loop": false
+    },
+    "tone_4-10": {
+      "start": 696,
+      "end": 706.0571428571428,
+      "loop": false
+    },
+    "tone_4-11": {
+      "start": 708,
+      "end": 718.0571428571428,
+      "loop": false
+    },
+    "tone_4-12": {
+      "start": 720,
+      "end": 730.0571428571428,
+      "loop": false
+    },
+    "tone_4-13": {
+      "start": 732,
+      "end": 742.0571428571428,
+      "loop": false
+    },
+    "tone_4-14": {
+      "start": 744,
+      "end": 754.0571428571428,
+      "loop": false
+    },
+    "tone_4-15": {
+      "start": 756,
+      "end": 766.0571428571428,
+      "loop": false
+    },
+    "tone_5-0": {
+      "start": 768,
+      "end": 778.0571428571428,
+      "loop": false
+    },
+    "tone_5-1": {
+      "start": 780,
+      "end": 790.0571428571428,
+      "loop": false
+    },
+    "tone_5-2": {
+      "start": 792,
+      "end": 802.0571428571428,
+      "loop": false
+    },
+    "tone_5-3": {
+      "start": 804,
+      "end": 814.0571428571428,
+      "loop": false
+    },
+    "tone_5-4": {
+      "start": 816,
+      "end": 826.0571428571428,
+      "loop": false
+    },
+    "tone_5-5": {
+      "start": 828,
+      "end": 838.0571428571428,
+      "loop": false
+    },
+    "tone_5-6": {
+      "start": 840,
+      "end": 850.0571428571428,
+      "loop": false
+    },
+    "tone_5-7": {
+      "start": 852,
+      "end": 862.0571428571428,
+      "loop": false
+    },
+    "tone_5-8": {
+      "start": 864,
+      "end": 874.0571428571428,
+      "loop": false
+    },
+    "tone_5-9": {
+      "start": 876,
+      "end": 886.0571428571428,
+      "loop": false
+    },
+    "tone_5-10": {
+      "start": 888,
+      "end": 898.0571428571428,
+      "loop": false
+    },
+    "tone_5-11": {
+      "start": 900,
+      "end": 910.0571428571428,
+      "loop": false
+    },
+    "tone_5-12": {
+      "start": 912,
+      "end": 922.0571428571428,
+      "loop": false
+    },
+    "tone_5-13": {
+      "start": 924,
+      "end": 934.0571428571428,
+      "loop": false
+    },
+    "tone_5-14": {
+      "start": 936,
+      "end": 946.0571428571428,
+      "loop": false
+    },
+    "tone_5-15": {
+      "start": 948,
+      "end": 958.0571428571428,
+      "loop": false
+    },
+    "tone_6-0": {
+      "start": 960,
+      "end": 970.0571428571428,
+      "loop": false
+    },
+    "tone_6-1": {
+      "start": 972,
+      "end": 982.0571428571428,
+      "loop": false
+    },
+    "tone_6-2": {
+      "start": 984,
+      "end": 994.0571428571428,
+      "loop": false
+    },
+    "tone_6-3": {
+      "start": 996,
+      "end": 1006.0571428571428,
+      "loop": false
+    },
+    "tone_6-4": {
+      "start": 1008,
+      "end": 1018.0571428571428,
+      "loop": false
+    },
+    "tone_6-5": {
+      "start": 1020,
+      "end": 1030.057142857143,
+      "loop": false
+    },
+    "tone_6-6": {
+      "start": 1032,
+      "end": 1042.057142857143,
+      "loop": false
+    },
+    "tone_6-7": {
+      "start": 1044,
+      "end": 1054.057142857143,
+      "loop": false
+    },
+    "tone_6-8": {
+      "start": 1056,
+      "end": 1066.057142857143,
+      "loop": false
+    },
+    "tone_6-9": {
+      "start": 1068,
+      "end": 1078.057142857143,
+      "loop": false
+    },
+    "tone_6-10": {
+      "start": 1080,
+      "end": 1090.057142857143,
+      "loop": false
+    },
+    "tone_6-11": {
+      "start": 1092,
+      "end": 1102.057142857143,
+      "loop": false
+    },
+    "tone_6-12": {
+      "start": 1104,
+      "end": 1114.057142857143,
+      "loop": false
+    },
+    "tone_6-13": {
+      "start": 1116,
+      "end": 1126.057142857143,
+      "loop": false
+    },
+    "tone_6-14": {
+      "start": 1128,
+      "end": 1138.057142857143,
+      "loop": false
+    },
+    "tone_6-15": {
+      "start": 1140,
+      "end": 1150.057142857143,
+      "loop": false
+    }
+  }
+}

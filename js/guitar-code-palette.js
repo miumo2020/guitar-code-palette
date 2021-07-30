@@ -195,7 +195,7 @@ class GuitarCodePalette extends React.Component {
           e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
           e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
           e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
-          e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.sound(this.state.press_point)}}, ["♪"]),
+          e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.soundCord(this.state.press_point)}}, ["♪"]),
           e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
         ]),
         e("div", {key: "layout-row-4", id: "layout-row-4"}, [
