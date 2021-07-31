@@ -21,6 +21,11 @@ export class CodeScore extends React.Component {
     this.setState({ score: update_score });
   }
 
+  playAll() {
+    // TODO: bpm設定
+    this.props.soundCodes(this.state.score, 120);
+  }
+
   render() {
     let scores = [];
     for (let i = 0; i < 16; i++) {
@@ -33,6 +38,7 @@ export class CodeScore extends React.Component {
 
     return [
       "Code Score",
+      e("div", {key: "play-all", className: "btn btn--green btn--cubic", onClick: ()=>{this.playAll()}}, ["PlayAll"]),
       e("div", { key: "score-line", className: "score-line" }, scores),
     ];
   }

@@ -60,4 +60,21 @@ export class GuitarSound {
       delay = delay + delay_time;
     }
   }
+
+  soundCords(score, bpm) {
+    this.sound.stop();
+
+    let interval = ((60 / bpm) * 1000) * 4; // bpmに対する1小節のmsec
+    let play_time = 0;
+    for(let i = 0; i < score.length; i++){
+      const func = () => {
+        if(score[i].position != null){
+          this.soundCord(score[i].position);
+        }
+      };
+      setTimeout(func, play_time);
+      play_time += interval;
+    }
+  }
+
 }
