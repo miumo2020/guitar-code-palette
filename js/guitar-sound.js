@@ -5,6 +5,7 @@ const MAX_STRING = 6; // TODO: 定数をまとめる
 export class GuitarSound {
   constructor() {
     this.sound = null;
+    this.playAllTimeoutList = [];
 
     // オーディオスプライト定義jsonファイルを取得
     fetch("assets/audio/guitar-sounds.json")
@@ -63,6 +64,7 @@ export class GuitarSound {
 
   soundCords(score, bpm) {
     this.sound.stop();
+    this.stopPlayAll();
 
     let interval = ((60 / bpm) * 1000) * 4; // bpmに対する1小節のmsec
     let play_time = 0;
@@ -72,9 +74,17 @@ export class GuitarSound {
           this.soundCord(score[i].position);
         }
       };
-      setTimeout(func, play_time);
+      let id = setTimeout(func, play_time);
+      this.playAllTimeoutList.push(id);
       play_time += interval;
     }
+  }
+
+  stopPlayAll() {
+    for (const id of this.playAllTimeoutList){
+      clearTimeout(id);
+    }
+    this.playAllTimeoutList = [];
   }
 
 }
