@@ -9,8 +9,10 @@ export class CodeScore extends React.Component {
     super(props);
     this.state = {
       score: Array(16).fill({ code_name: null, position: null }),
+      bpm: 120
     }
     this.getSelectedCodePalette = this.props.getSelectedCodePalette.bind(this);
+    this.setBpm = this.setBpm.bind(this);
   }
 
   drawCode(target_num) {
@@ -22,8 +24,11 @@ export class CodeScore extends React.Component {
   }
 
   playAll() {
-    // TODO: bpm設定
-    this.props.soundCodes(this.state.score, 120);
+    this.props.soundCodes(this.state.score, this.state.bpm);
+  }
+
+  setBpm(event) {
+    this.setState({ bpm: event.target.value });
   }
 
   render() {
@@ -39,6 +44,8 @@ export class CodeScore extends React.Component {
     return [
       "Code Score",
       e("div", {key: "play-all", className: "btn btn--green btn--cubic", onClick: ()=>{this.playAll()}}, ["PlayAll"]),
+      "BPM: ",
+      e("input", {key: "bpm-input", value: this.state.bpm, onChange: this.setBpm}),
       e("div", { key: "score-line", className: "score-line" }, scores),
     ];
   }
