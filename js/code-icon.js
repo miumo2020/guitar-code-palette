@@ -1,10 +1,13 @@
 "use strict";
 
+import { GuitarSound } from "./guitar-sound.js"
+
 const e = React.createElement;
 
 export class CodeIcon extends React.Component {
   constructor(props) {
     super(props);
+    this.guitar_sound = new GuitarSound();
   }
 
   displayFletNumber(max_flet, min_flet) {
@@ -191,6 +194,10 @@ export class CodeIcon extends React.Component {
     ];
   }
 
+  checkSound() {
+    this.guitar_sound.soundCord(this.props.position);
+  }
+
   render() {
     if (this.props.position == null) return "";
 
@@ -200,7 +207,7 @@ export class CodeIcon extends React.Component {
     }
     return [
       code_name, 
-      e("img", {key: "sound-icon", src: "assets/image/sound-icon.svg", className: "palette-sound-icon"}),
+      e("img", {key: "sound-icon", src: "assets/image/sound-icon.svg", className: "palette-sound-icon", onClick: () => this.checkSound()}),
       this.makeSvg()
     ];
   }
