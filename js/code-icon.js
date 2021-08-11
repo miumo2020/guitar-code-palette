@@ -198,6 +198,10 @@ export class CodeIcon extends React.Component {
     if (code_name == null) {
       code_name = "Unknown"
     }
-    return [code_name, this.makeSvg()];
+    return [
+      code_name, 
+      e("img", {key: "sound-icon", src: "assets/image/sound-icon.svg", className: "palette-sound-icon"}),
+      this.makeSvg()
+    ];
   }
 }

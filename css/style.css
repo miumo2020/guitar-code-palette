@@ -255,6 +255,7 @@ div.btn--green:hover {
 }
 
 .palette {
+  /* position: relative; */
   width: 90px;
   height: 90px;
   margin-top: 10px;
@@ -265,6 +266,7 @@ div.btn--green:hover {
 }
 
 .selected-palette {
+  /* position: relative; */
   width: 90px;
   height: 90px;
   margin-top: 10px;
@@ -274,12 +276,30 @@ div.btn--green:hover {
   background-color: #fff;
 }
 
+.palette-sound-icon {
+  /* position: absolute; */
+  /* right: 2px; */
+  width: 12px;
+  height: 12px;
+  margin-top: 3px;
+  margin-left: 3px;
+  padding: 3px;
+  background-color: #AAA;  
+  border-radius: 3px;
+}
+
+.palette-sound-icon:hover {
+  cursor : pointer;
+  background-color: #CCC; 
+}
+
 .score-line {
   display: flex;
   flex-wrap: wrap;
 }
 
 .score-code {
+  /* position: relative; */
   width: 150px;
   height: 100px;
   margin-left: -2px;
