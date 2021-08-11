@@ -13,6 +13,7 @@ export class CodeScore extends React.Component {
       bpm: 120
     }
     this.getSelectedCodePalette = this.props.getSelectedCodePalette.bind(this);
+    this.stop = this.stop.bind(this);
     this.setBpm = this.setBpm.bind(this);
 
     this.guitar_sound = new GuitarSound();
@@ -28,6 +29,10 @@ export class CodeScore extends React.Component {
 
   playAll() {
     this.guitar_sound.soundCords(this.state.score, this.state.bpm);
+  }
+
+  stop() {
+    this.guitar_sound.stopPlayAll();
   }
 
   setBpm(event) {
@@ -47,6 +52,7 @@ export class CodeScore extends React.Component {
     return [
       "Code Score",
       e("div", {key: "play-all", className: "btn btn--green btn--cubic", onClick: ()=>{this.playAll()}}, ["PlayAll"]),
+      e("div", {key: "stop", className: "btn btn--green btn--cubic", onClick: this.stop}, ["■"]),
       "BPM: ",
       e("input", {key: "bpm-input", value: this.state.bpm, onChange: this.setBpm}),
       e("div", { key: "score-line", className: "score-line" }, scores),

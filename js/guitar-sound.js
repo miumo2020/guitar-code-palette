@@ -69,7 +69,6 @@ export class GuitarSound {
   }
 
   soundCords(score, bpm) {
-    this.sound.stop();
     this.stopPlayAll();
 
     let interval = ((60 / bpm) * 1000) * 4; // bpmに対する1小節のmsec
@@ -87,6 +86,7 @@ export class GuitarSound {
   }
 
   stopPlayAll() {
+    this.sound.stop();
     for (const id of this.playAllTimeoutList){
       clearTimeout(id);
     }
