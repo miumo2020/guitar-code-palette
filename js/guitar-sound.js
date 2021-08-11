@@ -4,6 +4,12 @@ const MAX_STRING = 6; // TODO: 定数をまとめる
 
 export class GuitarSound {
   constructor() {
+    // シングルトンパターン
+    if (GuitarSound.instance instanceof GuitarSound) {
+      return GuitarSound.instance;
+    }
+    GuitarSound.instance = this;
+
     this.sound = null;
     this.playAllTimeoutList = [];
 

@@ -1,6 +1,7 @@
 "use strict";
 
 import { CodeIcon } from "./code-icon.js";
+import { GuitarSound } from "./guitar-sound.js"
 
 const e = React.createElement;
 
@@ -13,6 +14,8 @@ export class CodeScore extends React.Component {
     }
     this.getSelectedCodePalette = this.props.getSelectedCodePalette.bind(this);
     this.setBpm = this.setBpm.bind(this);
+
+    this.guitar_sound = new GuitarSound();
   }
 
   drawCode(target_num) {
@@ -24,7 +27,7 @@ export class CodeScore extends React.Component {
   }
 
   playAll() {
-    this.props.soundCodes(this.state.score, this.state.bpm);
+    this.guitar_sound.soundCords(this.state.score, this.state.bpm);
   }
 
   setBpm(event) {
