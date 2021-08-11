@@ -11,7 +11,7 @@ export class GuitarSound {
     GuitarSound.instance = this;
 
     this.sound = null;
-    this.playAllTimeoutList = [];
+    this.playTimeoutList = [];
 
     // オーディオスプライト定義jsonファイルを取得
     fetch("assets/audio/guitar-sounds.json")
@@ -68,29 +68,28 @@ export class GuitarSound {
     }
   }
 
-  soundCords(score, bpm) {
-    this.stopPlayAll();
-
+  play(score, bpm) {
+    this.stop();
     let interval = ((60 / bpm) * 1000) * 4; // bpmに対する1小節のmsec
     let play_time = 0;
-    for(let i = 0; i < score.length; i++){
+    for (let i = 0; i < score.length; i++) {
       const func = () => {
-        if(score[i].position != null){
+        if (score[i].position != null) {
           this.soundCord(score[i].position);
         }
       };
       let id = setTimeout(func, play_time);
-      this.playAllTimeoutList.push(id);
+      this.playTimeoutList.push(id);
       play_time += interval;
     }
   }
 
-  stopPlayAll() {
+  stop() {
     this.sound.stop();
-    for (const id of this.playAllTimeoutList){
+    for (const id of this.playTimeoutList) {
       clearTimeout(id);
     }
-    this.playAllTimeoutList = [];
+    this.playTimeoutList = [];
   }
 
 }
