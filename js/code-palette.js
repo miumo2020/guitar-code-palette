@@ -35,22 +35,6 @@ export class CodePalette extends React.Component {
     return this.state.code_palette[this.state.selected_palette];
   }
 
-  renderPalettes() {
-    let result = [];
-    for (let i = 0; i < MAX_PALETTE; i++) {
-      let class_name = "palette";
-      if (i == this.state.selected_palette) {
-        class_name = "selected-palette";
-      }
-      result.push(
-        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i) }, [
-          e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
-        ])
-      );
-    }
-    return result;
-  }
-
   registerPalette(code_name, position) {
     // 全弦押弦なしの場合、処理終了
     if (equalArray(position, [-1, -1, -1, -1, -1, -1])) return;
@@ -83,15 +67,28 @@ export class CodePalette extends React.Component {
         new_code_palette[sel_num] = { code_name: code_name, position: position };
       }
     }
-    
+
     this.setState({ selected_palette: sel_num })
     this.setState({ code_palette: new_code_palette });
   }
 
   render() {
+    let palette = [];
+    for (let i = 0; i < MAX_PALETTE; i++) {
+      let class_name = "palette";
+      if (i == this.state.selected_palette) {
+        class_name = "selected-palette";
+      }
+      palette.push(
+        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i) }, [
+          e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
+        ])
+      );
+    }
+
     return [
       e("div", { key: "code-palette" }, ["Code Palette"]),
-      e("div", { key: "palette-wrapper", className: "wrapper-flex" }, this.renderPalettes()),
+      e("div", { key: "palette-wrapper", className: "wrapper-flex" }, palette),
     ];
   }
 }
