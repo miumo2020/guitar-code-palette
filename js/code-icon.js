@@ -8,6 +8,7 @@ export class CodeIcon extends React.Component {
   constructor(props) {
     super(props);
     this.guitar_sound = new GuitarSound();
+    this.checkSound = this.checkSound.bind(this);
   }
 
   displayFletNumber(max_flet, min_flet) {
@@ -194,7 +195,8 @@ export class CodeIcon extends React.Component {
     ];
   }
 
-  checkSound() {
+  checkSound(e) {
+    e.stopPropagation();
     this.guitar_sound.soundCord(this.props.position);
   }
 
@@ -207,7 +209,7 @@ export class CodeIcon extends React.Component {
     }
     return [
       code_name, 
-      e("img", {key: "sound-icon", src: "assets/image/sound-icon.svg", className: "palette-sound-icon", onClick: () => this.checkSound()}),
+      e("img", {key: "sound-icon", src: "assets/image/sound-icon.svg", className: "palette-sound-icon", onClick: this.checkSound}),
       this.makeSvg()
     ];
   }
