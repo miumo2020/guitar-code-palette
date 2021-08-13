@@ -1,6 +1,7 @@
 "use strict";
 
 import { CodeIcon } from "./code-icon.js";
+import {CodePaletteMenu} from "./code-palette-menu.js";
 
 const e = React.createElement;
 
@@ -25,6 +26,8 @@ export class CodePalette extends React.Component {
       code_palette: Array(MAX_PALETTE).fill({ code_name: null, position: null }),
     };
     this.selectPalette = this.selectPalette.bind(this);
+    this.onContextMenu = this.onContextMenu.bind(this);
+    this.ref = React.createRef();
   }
 
   selectPalette(num) {
@@ -72,6 +75,15 @@ export class CodePalette extends React.Component {
     this.setState({ code_palette: new_code_palette });
   }
 
+  onContextMenu(event){
+    // 通常の右クリックメニューを非表示
+    event.preventDefault();
+    
+    let pos_x = event.clientX - 700; // TODO: 適当な値
+    let pos_y = event.clientY;
+    this.ref.current.show(pos_x, pos_y);
+  }
+
   render() {
     let palette = [];
     for (let i = 0; i < MAX_PALETTE; i++) {
@@ -80,7 +92,7 @@ export class CodePalette extends React.Component {
         class_name = "selected-palette";
       }
       palette.push(
-        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i) }, [
+        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i), onContextMenu: this.onContextMenu }, [
           e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
         ])
       );
@@ -89,6 +101,7 @@ export class CodePalette extends React.Component {
     return [
       e("div", { key: "code-palette" }, ["Code Palette"]),
       e("div", { key: "palette-wrapper", className: "wrapper-flex" }, palette),
+      e(CodePaletteMenu, {key: "code-palette-menu", ref: this.ref})
     ];
   }
 }

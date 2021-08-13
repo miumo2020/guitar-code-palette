@@ -276,6 +276,19 @@ div.btn--green:hover {
   background-color: #fff;
 }
 
+.palette-menu-box {
+  position: absolute;
+  width: 100px;
+  background-color: #8a9b0f;
+  color: #FFF;
+  visibility: hidden;
+}
+
+.palette-menu-item:hover {
+  cursor: pointer;
+  background-color: #616d0b;
+}
+
 .palette-sound-icon {
   /* position: absolute; */
   /* right: 2px; */
