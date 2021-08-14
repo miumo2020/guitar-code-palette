@@ -180,31 +180,33 @@ class GuitarCodePalette extends React.Component {
 
   render() {
     return [
-      e("div", {key: "layout-main", id: "layout-main"}, [
-        e("div", {key: "layout-row-1", id: "layout-row-1"}, [
-          e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
-            e(CodeMenu, { key: "code-menu", setCode: this.setCode }, []),
+      e("div", {key: "container", className: "container"}, [
+        e("div", {key: "layout-side", id: "layout-side"}, [
+          e(CodePalette, {key: "code-palette", ref: this.ref}, []),
+        ]),
+        e("div", {key: "layout-main", id: "layout-main"}, [
+          e("div", {key: "layout-row-1", id: "layout-row-1"}, [
+            e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
+              e(CodeMenu, { key: "code-menu", setCode: this.setCode }, []),
+            ]),
+            e("div", { key: "display-press-point" }, [this.state.press_point]),
+            e("div", { key: "code-display" }, [this.predictCode()]),
           ]),
-          e("div", { key: "display-press-point" }, [this.state.press_point]),
-          e("div", { key: "code-display" }, [this.predictCode()]),
+          e("div", {key: "layout-row-2", id: "layout-row-2"}, [
+            e(FingerBoard, { key: "finger-board", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
+          ]),
+          e("div", {key: "layout-row-3", id: "layout-row-3"}, [
+            e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
+            e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
+            e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
+            e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.soundCord(this.state.press_point)}}, ["♪"]),
+            e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
+          ]),
+          e("div", {key: "layout-row-4", id: "layout-row-4"}, [
+            e(CodeScore, {key: "code-score", getSelectedCodePalette: this.getSelectedCodePalette}, []),
+          ]),
         ]),
-        e("div", {key: "layout-row-2", id: "layout-row-2"}, [
-          e(FingerBoard, { key: "finger-board", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
-        ]),
-        e("div", {key: "layout-row-3", id: "layout-row-3"}, [
-          e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
-          e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
-          e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
-          e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.soundCord(this.state.press_point)}}, ["♪"]),
-          e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
-        ]),
-        e("div", {key: "layout-row-4", id: "layout-row-4"}, [
-          e(CodeScore, {key: "code-score", getSelectedCodePalette: this.getSelectedCodePalette}, []),
-        ]),
-      ]),
-      e("div", {key: "layout-side", id: "layout-side"}, [
-        e(CodePalette, {key: "code-palette", ref: this.ref}, []),
-      ]),
+      ])
     ];
   }
 }

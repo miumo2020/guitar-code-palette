@@ -1,17 +1,23 @@
-#layout-main {
-  display: block;
-  width: 800px;
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
 }
 
 #layout-side {
-  position: fixed;
   background-color: rgb(200, 200, 200, 1.0);
-  /* box-shadow: 0 0 8px rgb(0, 0, 0, 0.2); */
-  top: 0px;
-  right: 0px;
+  box-shadow: 0 0 8px rgb(0, 0, 0, 0.2);
   margin: 0;
+  margin-right: 10px;
   width: 230px;
-  height: 100%;
+}
+
+#layout-main {
+  display: block;
+  width: 800px;
+  margin-top: 10px;
 }
 
 #layout-row-1 {
@@ -250,6 +256,7 @@ div.btn--green:hover {
 }
 
 .wrapper-flex {
+  width: 230px;
   display: flex;
   flex-wrap: wrap;
 }
