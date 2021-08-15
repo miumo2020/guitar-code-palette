@@ -6,24 +6,24 @@ class String extends React.Component {
   constructor(props) {
     super(props);
     this.press = this.press.bind(this);
-    this.setPressPoint = props.setPressPoint.bind(this);
+    this.setPosition = props.setPosition.bind(this);
   }
 
   press(pos) {
-    this.setPressPoint(this.props.number, pos)
+    this.setPosition(this.props.number, pos)
   }
 
   mark_press(pos) {
     return(
-      this.props.press_point[this.props.number-1] == pos ? 
+      this.props.position[this.props.number-1] == pos ? 
       e("div", {key: "string_"+this.props.number+"-flet_"+pos+"-pressed", className: "string-press"}, [] ) : ""
     )
   }
 
   mark_open_string() {
-    if(this.props.press_point[this.props.number-1]==0){
+    if(this.props.position[this.props.number-1]==0){
       return e("div", {key: "string_"+this.props.number+"-flet_0-opened", className: "open-string"});
-    } else if(this.props.press_point[this.props.number-1]==-1){
+    } else if(this.props.position[this.props.number-1]==-1){
       return e("span", {key: "string_"+this.props.number+"-flet_0-closed", className: "close-string"});
     }
   }
@@ -55,7 +55,7 @@ class String extends React.Component {
 export class FingerBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.setPressPoint = props.setPressPoint.bind(this);
+    this.setPosition = props.setPosition.bind(this);
   }
 
   componentDidMount(){
@@ -112,12 +112,12 @@ export class FingerBoard extends React.Component {
   render() {
     return e("div", {key: "finger-board", id: "finger-board"}, [
       this.drawSvg(),
-      e(String, { key: "string_1", number: 1, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
-      e(String, { key: "string_2", number: 2, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
-      e(String, { key: "string_3", number: 3, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
-      e(String, { key: "string_4", number: 4, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
-      e(String, { key: "string_5", number: 5, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
-      e(String, { key: "string_6", number: 6, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
+      e(String, { key: "string_1", number: 1, position: this.props.position, setPosition: this.setPosition, }, []),
+      e(String, { key: "string_2", number: 2, position: this.props.position, setPosition: this.setPosition, }, []),
+      e(String, { key: "string_3", number: 3, position: this.props.position, setPosition: this.setPosition, }, []),
+      e(String, { key: "string_4", number: 4, position: this.props.position, setPosition: this.setPosition, }, []),
+      e(String, { key: "string_5", number: 5, position: this.props.position, setPosition: this.setPosition, }, []),
+      e(String, { key: "string_6", number: 6, position: this.props.position, setPosition: this.setPosition, }, []),
     ]);
   }
 }

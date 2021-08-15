@@ -16,7 +16,7 @@ class GuitarCodePalette extends React.Component {
     super(props);
     this.state = {
       tuning: [52, 47, 43, 38, 33, 28],
-      press_point: [-1, -1, -1, -1, -1, -1], // -1:押弦なし　0:解放
+      position: [-1, -1, -1, -1, -1, -1], // -1:押弦なし　0:解放
     };
     this.code_name = null;
 
@@ -73,19 +73,19 @@ class GuitarCodePalette extends React.Component {
     11: "B",
   };
 
-  setPressPoint = (string, point) => {
+  setPosition = (string, point) => {
     let new_point = -1;
-    if (this.state.press_point[string - 1] != point) {
+    if (this.state.position[string - 1] != point) {
       new_point = point;
     }
-    let new_press_point = [...this.state.press_point];
-    new_press_point[string - 1] = new_point;
-    this.setState({ press_point: new_press_point });
+    let new_position = [...this.state.position];
+    new_position[string - 1] = new_point;
+    this.setState({ position: new_position });
   };
 
   setCode = (position) => {
     let new_position = [...position];
-    this.setState({ press_point: new_position });
+    this.setState({ position: new_position });
   }
 
   predictCode() {
@@ -103,8 +103,8 @@ class GuitarCodePalette extends React.Component {
   getRoot() {
     let scale = [];
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      if (this.state.press_point[j] >= 0) {
-        scale.push(this.state.tuning[j] + this.state.press_point[j]);
+      if (this.state.position[j] >= 0) {
+        scale.push(this.state.tuning[j] + this.state.position[j]);
       }
     }
     scale.sort(function (a, b) {
@@ -118,8 +118,8 @@ class GuitarCodePalette extends React.Component {
   getNowScale() {
     let scale = [];
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      if (this.state.press_point[j] >= 0) {
-        scale.push(this.state.tuning[j] + this.state.press_point[j]);
+      if (this.state.position[j] >= 0) {
+        scale.push(this.state.tuning[j] + this.state.position[j]);
       }
     }
     scale.sort(function (a, b) {
@@ -145,33 +145,33 @@ class GuitarCodePalette extends React.Component {
   }
 
   reset() {
-    this.setState({ press_point: [-1, -1, -1, -1, -1, -1] });
+    this.setState({ position: [-1, -1, -1, -1, -1, -1] });
   }
   
   shiftDown() {
-    if (this.state.press_point.some((element) => element == 0) == true) return;
-    let new_press_point = [...this.state.press_point];
+    if (this.state.position.some((element) => element == 0) == true) return;
+    let new_position = [...this.state.position];
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      if (new_press_point[j] >= 0) {
-        new_press_point[j] = new_press_point[j] - 1;
+      if (new_position[j] >= 0) {
+        new_position[j] = new_position[j] - 1;
       }
     }
-    this.setState({ press_point: new_press_point });
+    this.setState({ position: new_position });
   }
 
   shiftUp() {
-    if (this.state.press_point.some((element) => element == MAX_FLET) == true) return;
-    let new_press_point = [...this.state.press_point];
+    if (this.state.position.some((element) => element == MAX_FLET) == true) return;
+    let new_position = [...this.state.position];
     for (let j = 0; j <= MAX_STRING - 1; j++) {
-      if (new_press_point[j] >= 0) {
-        new_press_point[j] = new_press_point[j] + 1;
+      if (new_position[j] >= 0) {
+        new_position[j] = new_position[j] + 1;
       }
     }
-    this.setState({ press_point: new_press_point });
+    this.setState({ position: new_position });
   }
 
   register() {
-    this.ref.current.registerPalette(this.code_name, this.state.press_point);
+    this.ref.current.registerPalette(this.code_name, this.state.position);
   }
 
   getSelectedCodePalette = () => {
@@ -189,17 +189,17 @@ class GuitarCodePalette extends React.Component {
             e("ul", { key: "code-menu-wrapper", className: "dropmenu" }, [
               e(CodeMenu, { key: "code-menu", setCode: this.setCode }, []),
             ]),
-            e("div", { key: "display-press-point" }, [this.state.press_point]),
+            e("div", { key: "display-press-point" }, [this.state.position]),
             e("div", { key: "code-display" }, [this.predictCode()]),
           ]),
           e("div", {key: "layout-row-2", id: "layout-row-2"}, [
-            e(FingerBoard, { key: "finger-board", press_point: this.state.press_point, setPressPoint: this.setPressPoint }, []),
+            e(FingerBoard, { key: "finger-board", position: this.state.position, setPosition: this.setPosition }, []),
           ]),
           e("div", {key: "layout-row-3", id: "layout-row-3"}, [
             e("div", {key: "reset-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.reset()}}, ["Reset"]),
             e("div", {key: "shift-down-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftDown()}}, ["<"]),
             e("div", {key: "shift-up-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.shiftUp()}}, [">"]),
-            e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.soundCord(this.state.press_point)}}, ["♪"]),
+            e("div", {key: "sound-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.guitar_sound.soundCord(this.state.position)}}, ["♪"]),
             e("div", {key: "regist-button", className: "btn btn--green btn--cubic", onClick: ()=>{this.register()}}, ["Register"]),
           ]),
           e("div", {key: "layout-row-4", id: "layout-row-4"}, [
