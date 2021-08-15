@@ -59,67 +59,59 @@ export class FingerBoard extends React.Component {
   }
 
   componentDidMount(){
-    this.drawCanvas();
+
   }
 
-  drawCanvas() { 
-    let canvas = document.getElementById("finger-board-canvas");
-    if (canvas.getContext) {
-      let context = canvas.getContext("2d");
+  drawSvg() {
+    return e("svg", {key: "finger-board-svg", className: "finger-board-svg", width: 518, height: 200 }, [
+      // 縦線
+      e("rect", {key: "v-line-1", x: 30, y: 15, width: 8, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-2", x: 68, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-3", x: 100, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-4", x: 132, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-5", x: 164, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-6", x: 196, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-7", x: 228, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-8", x: 260, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-9", x: 292, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-10", x: 324, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-11", x: 356, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-12", x: 388, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-13", x: 420, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-14", x: 452, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-15", x: 484, y: 15, width: 2, height: 152, fill: "#888"}),
+      e("rect", {key: "v-line-16", x: 516, y: 15, width: 2, height: 152, fill: "#888"}),
 
-      context.fillStyle = "#888";
+      // 横線
+      e("rect", {key: "h-line-1", x: 30, y: 15, width: 488, height:2, fill: "#888"}),
+      e("rect", {key: "h-line-2", x: 30, y: 45, width: 488, height:2, fill: "#888"}),
+      e("rect", {key: "h-line-3", x: 30, y: 75, width: 488, height:2, fill: "#888"}),
+      e("rect", {key: "h-line-4", x: 30, y: 105, width: 488, height:2, fill: "#888"}),
+      e("rect", {key: "h-line-5", x: 30, y: 135, width: 488, height:2, fill: "#888"}),
+      e("rect", {key: "h-line-6", x: 30, y: 165, width: 488, height:2, fill: "#888"}),
 
-      context.fillRect(30, 15, 8, 152);
-
-      context.fillRect(30, 15,  488, 2);
-      context.fillRect(30, 45,  488, 2);
-      context.fillRect(30, 75,  488, 2);
-      context.fillRect(30, 105, 488, 2);
-      context.fillRect(30, 135, 488, 2);
-      context.fillRect(30, 165, 488, 2);
-
-      context.fillRect(68, 15, 2, 152);
-      context.fillRect(100, 15, 2, 152);
-      context.fillRect(132, 15, 2, 152);
-      context.fillRect(164, 15, 2, 152);
-      context.fillRect(196, 15, 2, 152);
-      context.fillRect(228, 15, 2, 152);
-      context.fillRect(260, 15, 2, 152);
-      context.fillRect(292, 15, 2, 152);
-      context.fillRect(324, 15, 2, 152);
-      context.fillRect(356, 15, 2, 152);
-      context.fillRect(388, 15, 2, 152);
-      context.fillRect(420, 15, 2, 152);
-      context.fillRect(452, 15, 2, 152);
-      context.fillRect(484, 15, 2, 152);
-      context.fillRect(516, 15, 2, 152);
-
-      context.fillStyle = "#333";
-
-      context.font = "18px cursive";
-      context.fillText("1", 45, 195);
-      context.fillText("2", 77, 195);
-      context.fillText("3", 109, 195);
-      context.fillText("4", 141, 195);
-      context.fillText("5", 173, 195);
-      context.fillText("6", 205, 195);
-      context.fillText("7", 237, 195);
-      context.fillText("8", 269, 195);
-      context.fillText("9", 302, 195);
-      context.fillText("10", 330, 195);
-      context.fillText("11", 362, 195);
-      context.fillText("12", 394, 195);
-      context.fillText("13", 426, 195);
-      context.fillText("14", 458, 195);
-      context.fillText("15", 490, 195);
-    }
+      // フレット番号
+      e("text", {key: "number-1", x: 45 , y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "1"),
+      e("text", {key: "number-2", x: 77 , y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "2"),
+      e("text", {key: "number-3", x: 109, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "3"),
+      e("text", {key: "number-4", x: 141, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "4"),
+      e("text", {key: "number-5", x: 173, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "5"),
+      e("text", {key: "number-6", x: 205, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "6"),
+      e("text", {key: "number-7", x: 237, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "7"),
+      e("text", {key: "number-8", x: 269, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "8"),
+      e("text", {key: "number-9", x: 302, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "9"),
+      e("text", {key: "number-10", x: 330, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "10"),
+      e("text", {key: "number-11", x: 362, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "11"),
+      e("text", {key: "number-12", x: 394, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "12"),
+      e("text", {key: "number-13", x: 426, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "13"),
+      e("text", {key: "number-14", x: 458, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "14"),
+      e("text", {key: "number-15", x: 490, y: 195, fontSize: 18, fill: "#888", fontFamily: "cursive"}, "15"),
+    ])
   }
 
   render() {
     return e("div", {key: "finger-board", id: "finger-board"}, [
-      e("div", {key: "finger-board-canvas-wrapper", className: "canvas-wrapper"}, [
-        e("canvas", {key: "finger-board-canvas", id: "finger-board-canvas", width: "800px", height: "200px"}),
-      ]),
+      this.drawSvg(),
       e(String, { key: "string_1", number: 1, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
       e(String, { key: "string_2", number: 2, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
       e(String, { key: "string_3", number: 3, press_point: this.props.press_point, setPressPoint: this.setPressPoint, }, []),
