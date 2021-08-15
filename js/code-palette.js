@@ -79,8 +79,8 @@ export class CodePalette extends React.Component {
     // 通常の右クリックメニューを非表示
     event.preventDefault();
     
-    let pos_x = event.clientX;
-    let pos_y = event.clientY;
+    let pos_x = event.pageX;
+    let pos_y = event.pageY;
     this.ref.current.show(pos_x, pos_y);
   }
 
