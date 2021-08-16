@@ -5,11 +5,13 @@ import { GuitarSound } from "./guitar-sound.js"
 
 const e = React.createElement;
 
+const PALETTE_COUNT = 32;
+
 export class CodeScore extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      score: Array(16).fill({ code_name: null, position: null }),
+      score: Array(PALETTE_COUNT).fill({ code_name: null, position: null }),
       bpm: 120
     }
     this.getSelectedCodePalette = this.props.getSelectedCodePalette.bind(this);
@@ -42,7 +44,7 @@ export class CodeScore extends React.Component {
 
   render() {
     let scores = [];
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < PALETTE_COUNT; i++) {
       scores.push(
         e("div", { key: "score-code-" + String(i), className: "score-code", onClick: () => this.drawCode(i) }, [
           e(CodeIcon, { key: "code-" + String(i), codeName: this.state.score[i]["code_name"], position: this.state.score[i]["position"], })

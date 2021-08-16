@@ -140,7 +140,7 @@ export class CodeIcon extends React.Component {
     // TODO: フレット間隔が3より大きいコードは表示できない
     if (max_flet - min_flet > 3) {
       return [
-        e("svg", {key: "wrapper-svg"}, [
+        e("svg", {key: "wrapper-svg", width: 80, height: 60}, [
           // 横線
           e("rect", {key: "h-line-1", x: 10, y: 5, width: 50, height: 1, fill: "#CCC"}),
           e("rect", {key: "h-line-2", x: 10, y: 13, width: 50, height: 1, fill: "#CCC"}),
@@ -163,7 +163,7 @@ export class CodeIcon extends React.Component {
     }
 
     return [
-      e("svg", {key: "wrapper-svg"}, [
+      e("svg", {key: "wrapper-svg", width: 70, height: 60}, [
         // 横線
         e("rect", {key: "h-line-1", x: 10, y: 5, width: 50, height: 1, fill: "#888"}),
         e("rect", {key: "h-line-2", x: 10, y: 13, width: 50, height: 1, fill: "#888"}),

@@ -12,6 +12,7 @@ body {
   margin: 0;
   margin-right: 10px;
   width: 230px;
+  height: 100vh;
 }
 
 #layout-main {
@@ -34,8 +35,7 @@ body {
 }
 
 #layout-row-4 {
-  width: 620px;
-  height: 600px;
+  width: 660px;
   margin-top: 10px;
   /* background-color: rgba(230, 230, 230, 1.0); */
 }
@@ -321,10 +321,10 @@ div.btn--green:hover {
 
 .score-code {
   /* position: relative; */
-  width: 150px;
-  height: 100px;
+  width: 80px;
+  height: 120px;
   margin-left: -2px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 2px solid #888;
   background-color: #fff;
 }
