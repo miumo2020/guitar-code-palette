@@ -25,7 +25,9 @@ export class CodePaletteMenu extends React.Component {
   }
 
   onMenuItemClick(event) {
-    alert(event.target.innerHTML)
+    if (event.target.innerHTML == "delete") {
+      this.props.deletePalette();
+    }
     this.close();
   }
 
@@ -40,7 +42,7 @@ export class CodePaletteMenu extends React.Component {
         e("div", { key: "menu-item-2", className: "palette-menu-item", onClick: this.onMenuItemClick }, ["item-2"]),
         e("div", { key: "menu-item-3", className: "palette-menu-item", onClick: this.onMenuItemClick }, ["item-3"]),
         e("div", { key: "menu-item-delete", className: "palette-menu-item", onClick: this.onMenuItemClick }, [
-          e("img", { key: "garbage-icon", src: "assets/image/garbage-icon.svg", className: "palette-garbage-icon", onClick: this.onMenuItemClick }),
+          // e("img", { key: "garbage-icon", src: "assets/image/garbage-icon.svg", className: "palette-garbage-icon", onClick: this.onMenuItemClick }),
           "delete"
         ]),
       ]),
