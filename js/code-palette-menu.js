@@ -39,6 +39,10 @@ export class CodePaletteMenu extends React.Component {
         e("div", { key: "menu-item-1", className: "palette-menu-item", onClick: this.onMenuItemClick }, ["item-1"]),
         e("div", { key: "menu-item-2", className: "palette-menu-item", onClick: this.onMenuItemClick }, ["item-2"]),
         e("div", { key: "menu-item-3", className: "palette-menu-item", onClick: this.onMenuItemClick }, ["item-3"]),
+        e("div", { key: "menu-item-delete", className: "palette-menu-item", onClick: this.onMenuItemClick }, [
+          e("img", { key: "garbage-icon", src: "assets/image/garbage-icon.svg", className: "palette-garbage-icon", onClick: this.onMenuItemClick }),
+          "delete"
+        ]),
       ]),
       e("div", {
         key: "out-of-range-menu-box", className: "out-of-range-menu-box",

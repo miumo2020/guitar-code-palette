@@ -297,6 +297,12 @@ div.btn--green:hover {
   height: 100vh;
 }
 
+.palette-garbage-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+}
+
 .palette-sound-icon {
   /* position: absolute; */
   /* right: 2px; */
