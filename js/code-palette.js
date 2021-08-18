@@ -76,19 +76,20 @@ export class CodePalette extends React.Component {
   }
 
   deletePalette() {
-    let num = 0; // TODO: 選択したパレットを削除するよう修正
     let new_code_palette = [...this.state.code_palette];
     let delete_palette = {
       code_name: null, 
       position: null
     };
-    new_code_palette[num] = delete_palette;
+    new_code_palette[this.state.selected_palette] = delete_palette;
     this.setState({ code_palette: new_code_palette });
   }
 
   onContextMenu(event){
     // 通常の右クリックメニューを非表示
     event.preventDefault();
+    
+    this.selectPalette(event.currentTarget.getAttribute("num"));
     
     let pos_x = event.pageX;
     let pos_y = event.pageY;
@@ -103,7 +104,7 @@ export class CodePalette extends React.Component {
         class_name = "selected-palette";
       }
       palette.push(
-        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i), onContextMenu: this.onContextMenu }, [
+        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i), onContextMenu: this.onContextMenu, num: i }, [
           e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
         ])
       );
