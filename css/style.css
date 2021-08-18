@@ -273,6 +273,14 @@ div.btn--green:hover {
   background-color: #fff;
 }
 
+.palette:hover {
+  cursor: pointer;
+}
+
+.selected-palette:hover {
+  cursor: pointer;
+}
+
 .palette-menu-box {
   position: absolute;
   width: 100px;
