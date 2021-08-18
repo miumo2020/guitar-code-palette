@@ -1,7 +1,7 @@
 "use strict";
 
 import { CodeIcon } from "./code-icon.js";
-import {CodePaletteMenu} from "./code-palette-menu.js";
+import { CodePaletteMenu } from "./code-palette-menu.js";
 
 const e = React.createElement;
 
@@ -23,7 +23,10 @@ export class CodePalette extends React.Component {
     super(props);
     this.state = {
       selected_palette: 0,
-      code_palette: Array(MAX_PALETTE).fill({ code_name: null, position: null }),
+      code_palette: Array(MAX_PALETTE).fill({
+        code_name: null,
+        position: null,
+      }),
     };
     this.selectPalette = this.selectPalette.bind(this);
     this.onContextMenu = this.onContextMenu.bind(this);
@@ -32,7 +35,9 @@ export class CodePalette extends React.Component {
   }
 
   selectPalette(event) {
-    this.setState({ selected_palette: event.currentTarget.getAttribute("num") });
+    this.setState({
+      selected_palette: event.currentTarget.getAttribute("num"),
+    });
   }
 
   getSelectedCodePalette() {
@@ -47,8 +52,13 @@ export class CodePalette extends React.Component {
     for (let i = 0; i < MAX_PALETTE; i++) {
       if (this.state.code_palette[i]["position"] == null) continue;
       if (equalArray(position, this.state.code_palette[i]["position"])) {
-        alert("パレット" + String(i + 1) + "に同じコードが登録されています。\n" +
-          "コード名：" + this.state.code_palette[i]["code_name"]);
+        alert(
+          "パレット" +
+            String(i + 1) +
+            "に同じコードが登録されています。\n" +
+            "コード名：" +
+            this.state.code_palette[i]["code_name"]
+        );
         return;
       }
     }
@@ -58,8 +68,14 @@ export class CodePalette extends React.Component {
     let new_code_palette = [...this.state.code_palette];
     let sel_num;
     for (sel_num = 0; sel_num < MAX_PALETTE; sel_num++) {
-      if ((this.state.code_palette[sel_num]["code_name"] == null) && (this.state.code_palette[sel_num]["position"] == null)) {
-        new_code_palette[sel_num] = { code_name: code_name, position: position };
+      if (
+        this.state.code_palette[sel_num]["code_name"] == null &&
+        this.state.code_palette[sel_num]["position"] == null
+      ) {
+        new_code_palette[sel_num] = {
+          code_name: code_name,
+          position: position,
+        };
         break;
       }
     }
@@ -67,31 +83,41 @@ export class CodePalette extends React.Component {
     // 全パレット登録済みだった場合、選択中パレットに上書きするかダイアログを表示
     if (sel_num == MAX_PALETTE) {
       sel_num = this.state.selected_palette;
-      if (confirm("パレットに空きがありません。\n現在選択中のパレットに上書きしますか？\n選択中パレット：" + String(sel_num + 1) + "　" + String(this.state.code_palette[sel_num]["code_name"]))) {
-        new_code_palette[sel_num] = { code_name: code_name, position: position };
+      if (
+        confirm(
+          "パレットに空きがありません。\n現在選択中のパレットに上書きしますか？\n選択中パレット：" +
+            String(sel_num + 1) +
+            "　" +
+            String(this.state.code_palette[sel_num]["code_name"])
+        )
+      ) {
+        new_code_palette[sel_num] = {
+          code_name: code_name,
+          position: position,
+        };
       }
     }
 
-    this.setState({ selected_palette: sel_num })
+    this.setState({ selected_palette: sel_num });
     this.setState({ code_palette: new_code_palette });
   }
 
   deletePalette() {
     let new_code_palette = [...this.state.code_palette];
     let delete_palette = {
-      code_name: null, 
-      position: null
+      code_name: null,
+      position: null,
     };
     new_code_palette[this.state.selected_palette] = delete_palette;
     this.setState({ code_palette: new_code_palette });
   }
 
-  onContextMenu(event){
+  onContextMenu(event) {
     // 通常の右クリックメニューを非表示
     event.preventDefault();
 
     this.selectPalette(event.currentTarget.getAttribute("num"));
-    
+
     let pos_x = event.pageX;
     let pos_y = event.pageY;
     this.ref.current.show(pos_x, pos_y);
