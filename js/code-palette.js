@@ -25,13 +25,14 @@ export class CodePalette extends React.Component {
       selected_palette: 0,
       code_palette: Array(MAX_PALETTE).fill({ code_name: null, position: null }),
     };
+    this.selectPalette = this.selectPalette.bind(this);
     this.onContextMenu = this.onContextMenu.bind(this);
     this.deletePalette = this.deletePalette.bind(this);
     this.ref = React.createRef();
   }
 
-  selectPalette(num) {
-    this.setState({ selected_palette: num });
+  selectPalette(event) {
+    this.setState({ selected_palette: event.currentTarget.getAttribute("num") });
   }
 
   getSelectedCodePalette() {
@@ -88,7 +89,7 @@ export class CodePalette extends React.Component {
   onContextMenu(event){
     // 通常の右クリックメニューを非表示
     event.preventDefault();
-    
+
     this.selectPalette(event.currentTarget.getAttribute("num"));
     
     let pos_x = event.pageX;
@@ -104,7 +105,7 @@ export class CodePalette extends React.Component {
         class_name = "selected-palette";
       }
       palette.push(
-        e("div", { key: "palette-" + String(i), className: class_name, onClick: () => this.selectPalette(i), onContextMenu: this.onContextMenu, num: i }, [
+        e("div", { key: "palette-" + String(i), className: class_name, onClick: this.selectPalette, onContextMenu: this.onContextMenu, num: i }, [
           e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
         ])
       );
