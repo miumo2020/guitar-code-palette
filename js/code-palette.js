@@ -116,7 +116,7 @@ export class CodePalette extends React.Component {
     // 通常の右クリックメニューを非表示
     event.preventDefault();
 
-    this.selectPalette(event.currentTarget.getAttribute("num"));
+    this.selectPalette(event);
 
     let pos_x = event.pageX;
     let pos_y = event.pageY;
