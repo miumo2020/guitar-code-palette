@@ -7,6 +7,21 @@ const e = React.createElement;
 
 const MAX_PALETTE = 16;
 
+const DEFAULT_COLOR = [
+  "#ffdbdb",
+  "#ffeddb",
+  "#ffffdb",
+  "#edffdb",
+  "#dbffdb",
+  "#dbffed",
+  "#dbffff",
+  "#dbedff",
+  "#dbdbff",
+  "#eddbff",
+  "#ffdbff",
+  "#ffdbed",
+];
+
 // 配列比較用関数
 const equalArray = function (a1, a2) {
   var i = a1.length;
@@ -26,12 +41,15 @@ export class CodePalette extends React.Component {
       code_palette: Array(MAX_PALETTE).fill({
         code_name: null,
         position: null,
+        color: "#FFF"
       }),
     };
     this.selectPalette = this.selectPalette.bind(this);
     this.onContextMenu = this.onContextMenu.bind(this);
     this.deletePalette = this.deletePalette.bind(this);
     this.ref = React.createRef();
+
+    this.register_count = 0;
   }
 
   selectPalette(event) {
@@ -63,9 +81,15 @@ export class CodePalette extends React.Component {
       }
     }
 
+    // state更新用
+    let new_code_palette = [...this.state.code_palette];
+
+    // パレットのデフォルトカラー設定
+    let color = DEFAULT_COLOR[this.register_count % DEFAULT_COLOR.length];
+    this.register_count += 1;
+
     // 1弦でも押弦がある場合、パレット登録
     // パレット0から順番に参照し、空いているパレットに登録する
-    let new_code_palette = [...this.state.code_palette];
     let sel_num;
     for (sel_num = 0; sel_num < MAX_PALETTE; sel_num++) {
       if (
@@ -75,6 +99,7 @@ export class CodePalette extends React.Component {
         new_code_palette[sel_num] = {
           code_name: code_name,
           position: position,
+          color: color
         };
         break;
       }
@@ -94,6 +119,7 @@ export class CodePalette extends React.Component {
         new_code_palette[sel_num] = {
           code_name: code_name,
           position: position,
+          color: color
         };
       }
     }
@@ -107,6 +133,7 @@ export class CodePalette extends React.Component {
     let delete_palette = {
       code_name: null,
       position: null,
+      color: "#FFF"
     };
     new_code_palette[this.state.selected_palette] = delete_palette;
     this.setState({ code_palette: new_code_palette });
@@ -126,15 +153,20 @@ export class CodePalette extends React.Component {
   render() {
     let palette = [];
     for (let i = 0; i < MAX_PALETTE; i++) {
-      let class_name = "palette";
       if (i == this.state.selected_palette) {
-        class_name = "selected-palette";
+        palette.push(
+          e("div", { key: "palette-" + String(i), className: "selected-palette", onClick: this.selectPalette, onContextMenu: this.onContextMenu, num: i, style: { backgroundColor: this.state.code_palette[i]["color"] } }, [
+            e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
+          ])
+        );
+      } else {
+        palette.push(
+          e("div", { key: "palette-" + String(i), className: "palette", onClick: this.selectPalette, onContextMenu: this.onContextMenu, num: i, style: { backgroundColor: this.state.code_palette[i]["color"], border: "5px solid " + this.state.code_palette[i]["color"] } }, [
+            e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
+          ])
+        );
       }
-      palette.push(
-        e("div", { key: "palette-" + String(i), className: class_name, onClick: this.selectPalette, onContextMenu: this.onContextMenu, num: i }, [
-          e(CodeIcon, { key: "palette-code-" + String(i), codeName: this.state.code_palette[i]["code_name"], position: this.state.code_palette[i]["position"] })
-        ])
-      );
+
     }
 
     return [
